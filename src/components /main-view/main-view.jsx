@@ -39,6 +39,12 @@ export class MainView extends React.Component {
       user,
     });
   }
+
+  onRegister(registered) {
+    this.setState({
+      registered,
+    });
+  }
   render() {
     const { movies, selectedMovie, user } = this.state;
 

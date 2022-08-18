@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 
-export function LoginView(props) {
+export function RegistrationView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [birthdate, setBirthdate] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
+    console.log(username, password, email, birthdate);
     /* Send a request to the server for authentication */
     /* then call props.onLoggedIn(username) */
-    props.onLoggedIn(username);
-  };
-
-  //newly added code before 3.5
-  const handleRegister = (e) => {
-    e.preventDefault();
-    props.onRegister(true);
+    props.onRegistered(false);
   };
 
   return (
@@ -36,11 +32,25 @@ export function LoginView(props) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
+      <label>
+        Email:
+        <input
+          type='email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </label>
+      <label>
+        Birthday:
+        <input
+          type='date'
+          value={birthdate}
+          onChange={(e) => setBirthdate(e.target.value)}
+        />
+      </label>
+
       <button type='submit' onClick={handleSubmit}>
         Submit
-      </button>
-      <button type='submit' onClick={handleRegister}>
-        Register here
       </button>
     </form>
   );
