@@ -1,22 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import { Card, Button, Container, Row, Col } from "react-bootstrap";
+
+import "./movie-card.scss";
 
 export class MovieCard extends React.Component {
   render() {
     const { movie, onMovieClick } = this.props;
     return (
-      <Card>
-        <Card.Img variant='top' src={movie.ImagePath} />
-        <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text>{movie.Description}</Card.Text>
-          <Button onClick={() => onMovieClick(movie)} variant='link'>
-            Open
-          </Button>
-        </Card.Body>
-      </Card>
+      //container, row, and col -> may not be absolutely necessary.  Not sure if I like it before all was implemented
+      <Container>
+        <Row>
+          <Col>
+            <Card>
+              <Card.Img
+                variant='top'
+                src={movie.ImagePath}
+                style={{ width: "16rem", height: "20rem" }}
+              />
+              <Card.Body>
+                <Card.Title>{movie.Title}</Card.Title>
+                <Card.Text>{movie.Description}</Card.Text>
+                <Button onClick={() => onMovieClick(movie)} variant='link'>
+                  More details
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     );
     // return (
     //   <div
