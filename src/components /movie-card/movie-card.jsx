@@ -9,7 +9,7 @@ export class MovieCard extends React.Component {
     const { movie, onMovieClick } = this.props;
     return (
       //container, row, and col -> may not be absolutely necessary.  Not sure if I like it before all was implemented
-      <Container>
+      <Container style={{ marginBottom: 20 }}>
         <Row>
           <Col>
             <Card>

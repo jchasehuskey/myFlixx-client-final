@@ -28,9 +28,9 @@ export function LoginView(props) {
   };
 
   return (
-    <div>
+    <div className='bg-dark ' style={{ paddingBottom: "35rem" }}>
       <Navbar fluid bg='dark' variant='dark'>
-        <Container>
+        <Container fluid style={{ margin: 0 }}>
           <Navbar.Brand href='#home'>MyFlixx Movies</Navbar.Brand>
           <Nav className='me-auto'>
             <Nav.Link href='#home'>Movies</Nav.Link>

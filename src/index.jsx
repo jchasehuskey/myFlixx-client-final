@@ -10,7 +10,8 @@ import "./index.scss";
 class MyFlixApplication extends React.Component {
   render() {
     return (
-      <Container fluid>
+      //padding to zero takes away from sides of screen
+      <Container fluid style={{ padding: 0 }}>
         <MainView />
       </Container>
     );

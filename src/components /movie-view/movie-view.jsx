@@ -9,7 +9,7 @@ export class MovieView extends React.Component {
     return (
       <Container className='movie-view'>
         <Row>
-          <Col className='movie-poster'>
+          <Col className='movie-poster d-flex justify-content-center'>
             <img
               src={movie.ImagePath}
               style={{ width: "20rem", height: "24rem" }}

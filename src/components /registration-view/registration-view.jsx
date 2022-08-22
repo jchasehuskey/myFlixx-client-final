@@ -8,11 +8,13 @@ import {
   Container,
   Col,
   Row,
-  // Image,
+  Image,
   Nav,
   Navbar,
 } from "react-bootstrap";
-// import bgImg from "./images/myflix.jpeg";
+import backgroundImg from "./images/myflix.jpeg";
+
+import "./registration-view.scss";
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
@@ -29,9 +31,22 @@ export function RegistrationView(props) {
   };
 
   return (
-    <div>
+    <div
+      id='classicformpage'
+      // className='bg-dark '
+      style={{
+        paddingBottom: "27rem",
+        backgroundImage: "url(" + require("./images/denverSkyline.jpeg") + ")",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        maxHeight: "100vh", //aligns perfectly with bottom :)
+
+        //need to figure out how to make padding 100vh for all screens and widths
+      }}
+    >
       <Navbar fluid bg='dark' variant='dark'>
-        <Container>
+        <Container fluid style={{ margin: 0 }}>
           <Navbar.Brand href='#home'>MyFlixx Movies</Navbar.Brand>
           <Nav className='me-auto'>
             <Nav.Link href='#home'>Movies</Nav.Link>
@@ -96,7 +111,7 @@ export function RegistrationView(props) {
                     type='submit'
                     onClick={handleSubmit}
                   >
-                    Submit
+                    Sign up
                   </Button>
                 </Card.Body>
               </Card>

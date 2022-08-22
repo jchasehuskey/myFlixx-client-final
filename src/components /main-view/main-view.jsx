@@ -69,7 +69,7 @@ export class MainView extends React.Component {
     //if no movie is selected show the list -
     //if a movie is selected show the Movie View details
     return (
-      <div>
+      <div className='bg-dark '>
         <Navbar fluid bg='dark' variant='dark' style={{ marginBottom: 80 }}>
           <Container>
             <Navbar.Brand href='#home'>MyFlixx Movies</Navbar.Brand>
@@ -80,7 +80,7 @@ export class MainView extends React.Component {
             </Nav>
           </Container>
         </Navbar>
-        <Container>
+        <Container fluid>
           <Row className='main-view justify-content-md-center'>
             {selectedMovie ? (
               <Col md={8}>
