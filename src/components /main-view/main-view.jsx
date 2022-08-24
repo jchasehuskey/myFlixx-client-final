@@ -5,6 +5,7 @@ import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { Row, Col, Nav, Navbar, Container } from "react-bootstrap";
+import "./main-view.scss";
 
 export class MainView extends React.Component {
   constructor() {
@@ -69,18 +70,26 @@ export class MainView extends React.Component {
     //if no movie is selected show the list -
     //if a movie is selected show the Movie View details
     return (
-      <div className='bg-dark '>
-        <Navbar fluid bg='dark' variant='dark' style={{ marginBottom: 80 }}>
-          <Container>
-            <Navbar.Brand href='#home'>MyFlixx Movies</Navbar.Brand>
-            <Nav className='me-auto'>
-              <Nav.Link href='#home'>Movies</Nav.Link>
-              <Nav.Link href='#features'>Features</Nav.Link>
-              <Nav.Link href='#pricing'>Login</Nav.Link>
+      <div>
+        <Navbar className='main-view-nav' fluid>
+          <Container fluid style={{ margin: 0 }}>
+            <Navbar.Brand className='nav-text' href='#home'>
+              MyFlixx Movies
+            </Navbar.Brand>
+            <Nav style={{ padding: "1rem 2rem" }}>
+              <Nav.Link className='nav-text' href='#home'>
+                Movies
+              </Nav.Link>
+              <Nav.Link className='nav-text' href='#features'>
+                Features
+              </Nav.Link>
+              <Nav.Link className='nav-text' href='#pricing'>
+                Login
+              </Nav.Link>
             </Nav>
           </Container>
         </Navbar>
-        <Container fluid>
+        <Container fluid className='bg-dark'>
           <Row className='main-view justify-content-md-center'>
             {selectedMovie ? (
               <Col md={8}>

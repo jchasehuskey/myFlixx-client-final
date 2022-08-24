@@ -1,0 +1,11 @@
+$nav-text: #da77f2;
+$nav-background: #212529;
+$body-background: #343a40;
+
+.nav-text {
+  color: $nav-text;
+}
+
+.main-view-nav {
+  background-color: $nav-background !important;
+}

@@ -9,19 +9,34 @@ export class MovieCard extends React.Component {
     const { movie, onMovieClick } = this.props;
     return (
       //container, row, and col -> may not be absolutely necessary.  Not sure if I like it before all was implemented
-      <Container style={{ marginBottom: 20 }}>
+
+      <Container className='card-container' style={{ marginBottom: 20 }}>
         <Row>
           <Col>
-            <Card>
+            <Card className='movie-card'>
               <Card.Img
+                className='card-img'
                 variant='top'
                 src={movie.ImagePath}
-                style={{ width: "16rem", height: "20rem" }}
+                // style={{ width: "100%", height: "24rem" }}
+                // style={{ width: "100%" }}
               />
-              <Card.Body>
-                <Card.Title>{movie.Title}</Card.Title>
-                <Card.Text>{movie.Description}</Card.Text>
-                <Button onClick={() => onMovieClick(movie)} variant='link'>
+              <Card.Body
+                className='card-body'
+                // className='overflow-hidden'
+                style={{ height: "10rem" }}
+              >
+                <Card.Title className='card-title-name'>
+                  {movie.Title}
+                </Card.Title>
+                <Card.Text className='description'>
+                  {movie.Description}
+                </Card.Text>
+                <Button
+                  className='card-button'
+                  onClick={() => onMovieClick(movie)}
+                  variant='link'
+                >
                   More details
                 </Button>
               </Card.Body>
@@ -30,6 +45,7 @@ export class MovieCard extends React.Component {
         </Row>
       </Container>
     );
+
     // return (
     //   <div
     //     className='movie-card'

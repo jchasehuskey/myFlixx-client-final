@@ -11,6 +11,7 @@ import {
   Card,
   CardGroup,
 } from "react-bootstrap";
+import "./login-view.scss";
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");
@@ -26,13 +27,25 @@ export function LoginView(props) {
     e.preventDefault();
     props.onRegister(true);
   };
-
+  //className='bg-dark ' style={{ paddingBottom: "35rem" }}
   return (
-    <div className='bg-dark ' style={{ paddingBottom: "35rem" }}>
+    <div
+      id='classicformpage'
+      // className='bg-dark '
+      style={{
+        paddingBottom: "27rem",
+        backgroundImage:
+          "url(" + require(".././images/denverSkyline.jpeg") + ")",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        maxHeight: "100vh", //aligns perfectly with bottom :)
+      }}
+    >
       <Navbar fluid bg='dark' variant='dark'>
         <Container fluid style={{ margin: 0 }}>
           <Navbar.Brand href='#home'>MyFlixx Movies</Navbar.Brand>
-          <Nav className='me-auto'>
+          <Nav className='me-auto' style={{ padding: "1rem 2rem" }}>
             <Nav.Link href='#home'>Movies</Nav.Link>
             <Nav.Link href='#features'>Features</Nav.Link>
             <Nav.Link href='#pricing'>Login</Nav.Link>

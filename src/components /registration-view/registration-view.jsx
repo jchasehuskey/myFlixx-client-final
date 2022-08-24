@@ -12,7 +12,6 @@ import {
   Nav,
   Navbar,
 } from "react-bootstrap";
-import backgroundImg from "./images/myflix.jpeg";
 
 import "./registration-view.scss";
 
@@ -36,30 +35,38 @@ export function RegistrationView(props) {
       // className='bg-dark '
       style={{
         paddingBottom: "27rem",
-        backgroundImage: "url(" + require("./images/denverSkyline.jpeg") + ")",
+        backgroundImage:
+          "url(" + require(".././images/denverSkyline.jpeg") + ")",
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        maxHeight: "100vh", //aligns perfectly with bottom :)
+        maxHeight: "100vh",
+
+        //aligns perfectly with bottom :)
 
         //need to figure out how to make padding 100vh for all screens and widths
+        //container was originally 28 rem btw below navbar***
       }}
     >
       <Navbar fluid bg='dark' variant='dark'>
         <Container fluid style={{ margin: 0 }}>
           <Navbar.Brand href='#home'>MyFlixx Movies</Navbar.Brand>
-          <Nav className='me-auto'>
+          <Nav className='me-auto' style={{ padding: "1rem 2rem" }}>
             <Nav.Link href='#home'>Movies</Nav.Link>
             <Nav.Link href='#features'>Features</Nav.Link>
             <Nav.Link href='#pricing'>Login</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
-      <Container style={{ width: "28rem" }}>
-        <Row>
+
+      <Container style={{ width: "56rem", marginTop: 100 }}>
+        <Row className='d-flex align-items-center'>
+          <Col>
+            <h2>Movie browsing at its finest</h2>
+          </Col>
           <Col>
             <CardGroup>
-              <Card style={{ marginTop: 100 }}>
+              <Card>
                 <Card.Body>
                   <Card.Title>Welcome to my Flixx, please register</Card.Title>
                   <Form>

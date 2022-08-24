@@ -1,16 +1,4 @@
-// .bg-full-screen {
-//   max-width: "100%";
-//   color: black;
-// }
-
-// #classicformpage .view {
-//   //   background-image: url("http://mdbootstrap.com/img/Photos/Others/images/91.webp");
-//   background-image: url("./images/myflix.jpeg");
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   background-position: center center;
-//   height: 100vh;
-// }
+$nav-background: #212529;
 
 JSX CSS #classicformpage .view {
   background-image: url("http://mdbootstrap.com/img/Photos/Others/images/91.webp");
@@ -18,6 +6,7 @@ JSX CSS #classicformpage .view {
   background-size: cover;
   background-position: center center;
   height: 100vh;
+  filter: brightness(100%);
 }
 
 #classicformpage .gradient {
