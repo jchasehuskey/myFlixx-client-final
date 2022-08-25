@@ -1,4 +1,5 @@
 $nav-background: #212529;
+//font-family: 'Inter', sans-serif;
 
 JSX CSS #classicformpage .view {
   background-image: url("http://mdbootstrap.com/img/Photos/Others/images/91.webp");
@@ -53,3 +54,14 @@ JSX CSS #classicformpage .view {
   color: #fff !important;
 }
 //how can i get this to wokr?
+
+.main-view-nav {
+  background-color: $nav-background !important;
+  background-color: white !important;
+}
+
+.nav {
+  font-family: "Inter", sans-serif !important;
+  color: #fff;
+  font-weight: 700;
+}

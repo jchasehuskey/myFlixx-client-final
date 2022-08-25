@@ -37717,6 +37717,7 @@ function RegistrationView(props) {
         },
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar), {
+                className: "nav",
                 fluid: true,
                 bg: "dark",
                 variant: "dark",

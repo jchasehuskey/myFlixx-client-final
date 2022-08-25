@@ -48,7 +48,7 @@ export function RegistrationView(props) {
         //container was originally 28 rem btw below navbar***
       }}
     >
-      <Navbar fluid bg='dark' variant='dark'>
+      <Navbar className='nav' fluid bg='dark' variant='dark'>
         <Container fluid style={{ margin: 0 }}>
           <Navbar.Brand href='#home'>MyFlixx Movies</Navbar.Brand>
           <Nav className='me-auto' style={{ padding: "1rem 2rem" }}>

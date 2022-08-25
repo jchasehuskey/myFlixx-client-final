@@ -38,6 +38,10 @@ JSX CSS #classicformpage .view {
   color: #fff !important;
 }
 
+.main-view-nav {
+  background-color: #212529 !important;
+}
+
 .card-container {
   margin-top: 3rem;
 }
@@ -80,6 +84,10 @@ JSX CSS #classicformpage .view {
   background: #ffffff89 !important;
 }
 
+.card-button:hover {
+  background-color: #212529 !important;
+}
+
 JSX CSS #classicformpage .view {
   height: 100vh;
   filter: brightness();
@@ -119,6 +127,16 @@ JSX CSS #classicformpage .view {
 
 #classicformpage label {
   color: #fff !important;
+}
+
+.main-view-nav {
+  background-color: #fff !important;
+}
+
+.nav {
+  color: #fff;
+  font-weight: 700;
+  font-family: Inter, sans-serif !important;
 }
 
 .nav-text {
