@@ -19,6 +19,24 @@ Nav a:hover {
   background-color: #000000ea !important;
 }
 
+.container-form {
+  width: 28rem !important;
+}
+
+.card-styling {
+  margin-top: 10rem;
+  margin-bottom: 3rem;
+}
+
+.login-button {
+  width: 5rem;
+  margin-right: 1rem;
+}
+
+.register-button {
+  width: 8rem;
+}
+
 JSX CSS #classicformpage .view {
   height: 100vh;
   background-image: url("http://mdbootstrap.com/img/Photos/Others/images/91.webp");
@@ -65,6 +83,7 @@ JSX CSS #classicformpage .view {
 
 .card-container {
   margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 
 .movie-card {
@@ -172,6 +191,15 @@ Nav a:hover {
 .main-view-nav:hover {
   transition: all .8s;
   background-color: #000000ea !important;
+}
+
+.container-register {
+  width: 56rem;
+  margin-top: 10rem;
+}
+
+.registration-button {
+  margin-top: 2rem;
 }
 
 JSX CSS #classicformpage .view {

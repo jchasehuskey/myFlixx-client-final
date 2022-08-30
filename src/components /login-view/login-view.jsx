@@ -61,11 +61,11 @@ export function LoginView(props) {
         </Container>
       </Navbar>
 
-      <Container style={{ width: "28rem" }}>
+      <Container className='container-form'>
         <Row>
           <Col>
             <CardGroup>
-              <Card style={{ marginTop: 100, marginBottom: 30 }}>
+              <Card className='card-styling'>
                 <Card.Body>
                   <Card.Title>Login</Card.Title>
                   <Form>
@@ -94,7 +94,7 @@ export function LoginView(props) {
               style={{ marginTop: 10 }}
             >
               <Button
-                style={{ width: "5rem", marginRight: 10 }}
+                className='login-button'
                 variant='primary'
                 type='submit'
                 onClick={handleSubmit}
@@ -102,7 +102,7 @@ export function LoginView(props) {
                 Submit
               </Button>
               <Button
-                style={{ width: "8rem" }}
+                className='register=button'
                 variant='primary'
                 type='submit'
                 onClick={handleRegister}

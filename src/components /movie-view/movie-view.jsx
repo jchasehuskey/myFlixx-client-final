@@ -27,19 +27,6 @@ export class MovieView extends React.Component {
               Back
             </Button>
           </Col>
-
-          {/* </Row>
-        <Row className='movie-title'> */}
-          {/* <Col className='label'>Title: </Col> */}
-          {/* <Col className='movie-title label value'>Title: {movie.Title}</Col> */}
-          {/* </Row> */}
-
-          {/* <Row className='movie-description'> */}
-          {/* <Col className='label'>Description: </Col> */}
-
-          {/* <Col className='movie-description label value'>
-            Description: {movie.Description}
-          </Col> */}
         </Row>
       </Container>
     );

@@ -10,7 +10,7 @@ export class MovieCard extends React.Component {
     return (
       //container, row, and col -> may not be absolutely necessary.  Not sure if I like it before all was implemented
 
-      <Container className='card-container' style={{ marginBottom: 20 }}>
+      <Container className='card-container'>
         <Row>
           <Col>
             <Card className='movie-card'>
@@ -18,12 +18,11 @@ export class MovieCard extends React.Component {
                 className='card-img'
                 variant='top'
                 src={movie.ImagePath}
-                // style={{ width: "100%", height: "24rem" }}
-                // style={{ width: "100%" }}
               />
               <Card.Body
                 className='card-body'
-                // className='overflow-hidden'
+                //keep style below inline, bug if taken out
+
                 style={{ height: "10rem" }}
               >
                 <Card.Title className='card-title-name'>

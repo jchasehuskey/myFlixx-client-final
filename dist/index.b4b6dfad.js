@@ -30416,18 +30416,13 @@ function LoginView(props) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
-                style: {
-                    width: "28rem"
-                },
+                className: "container-form",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.CardGroup), {
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
-                                    style: {
-                                        marginTop: 100,
-                                        marginBottom: 30
-                                    },
+                                    className: "card-styling",
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
@@ -30518,10 +30513,7 @@ function LoginView(props) {
                                 },
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                        style: {
-                                            width: "5rem",
-                                            marginRight: 10
-                                        },
+                                        className: "login-button",
                                         variant: "primary",
                                         type: "submit",
                                         onClick: handleSubmit,
@@ -30532,9 +30524,7 @@ function LoginView(props) {
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                        style: {
-                                            width: "8rem"
-                                        },
+                                        className: "register=button",
                                         variant: "primary",
                                         type: "submit",
                                         onClick: handleRegister,
@@ -37436,9 +37426,6 @@ class MovieCard extends (0, _reactDefault.default).Component {
         return(//container, row, and col -> may not be absolutely necessary.  Not sure if I like it before all was implemented
         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
             className: "card-container",
-            style: {
-                marginBottom: 20
-            },
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
@@ -37455,7 +37442,7 @@ class MovieCard extends (0, _reactDefault.default).Component {
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
                                 className: "card-body",
-                                // className='overflow-hidden'
+                                //keep style below inline, bug if taken out
                                 style: {
                                     height: "10rem"
                                 },
@@ -37465,7 +37452,7 @@ class MovieCard extends (0, _reactDefault.default).Component {
                                         children: movie.Title
                                     }, void 0, false, {
                                         fileName: "src/components /movie-card/movie-card.jsx",
-                                        lineNumber: 29,
+                                        lineNumber: 28,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
@@ -37473,7 +37460,7 @@ class MovieCard extends (0, _reactDefault.default).Component {
                                         children: movie.Description
                                     }, void 0, false, {
                                         fileName: "src/components /movie-card/movie-card.jsx",
-                                        lineNumber: 32,
+                                        lineNumber: 31,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -37483,13 +37470,13 @@ class MovieCard extends (0, _reactDefault.default).Component {
                                         children: "More details"
                                     }, void 0, false, {
                                         fileName: "src/components /movie-card/movie-card.jsx",
-                                        lineNumber: 35,
+                                        lineNumber: 34,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components /movie-card/movie-card.jsx",
-                                lineNumber: 24,
+                                lineNumber: 22,
                                 columnNumber: 15
                             }, this)
                         ]
@@ -37767,10 +37754,7 @@ function RegistrationView(props) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
-                style: {
-                    width: "56rem",
-                    marginTop: 100
-                },
+                className: "container-register",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                     className: "d-flex align-items-center",
                     children: [
@@ -37912,6 +37896,7 @@ function RegistrationView(props) {
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                                                className: "registration-button",
                                                 style: {
                                                     marginTop: 20
                                                 },

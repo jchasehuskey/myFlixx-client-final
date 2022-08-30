@@ -67,7 +67,7 @@ export function RegistrationView(props) {
         </Container>
       </Navbar>
 
-      <Container style={{ width: "56rem", marginTop: 100 }}>
+      <Container className='container-register'>
         <Row className='d-flex align-items-center'>
           <Col>
             <h2>Movie browsing at its finest</h2>
@@ -122,6 +122,7 @@ export function RegistrationView(props) {
                   </Form>
 
                   <Button
+                    className='registration-button'
                     style={{ marginTop: 20 }}
                     type='submit'
                     onClick={handleSubmit}
