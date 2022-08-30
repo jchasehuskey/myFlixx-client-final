@@ -3,6 +3,10 @@ $nav-background: #212529;
 $body-background: #343a40;
 $nav-text: #f783ac;
 
+* {
+  font-family: "Inter", sans-serif !important;
+}
+
 .nav-text {
   color: $nav-text !important;
 }

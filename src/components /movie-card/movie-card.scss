@@ -4,6 +4,10 @@ $secondary-black: #212529;
 $title-color-secondary: #f783ac;
 // font-family: "Playfair Display SC", serif;
 
+* {
+  font-family: "Inter", sans-serif !important;
+}
+
 .card-container {
   margin-top: 3rem;
   margin-bottom: 2rem;
