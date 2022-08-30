@@ -42,13 +42,21 @@ export function LoginView(props) {
         maxHeight: "100vh", //aligns perfectly with bottom :)
       }}
     >
-      <Navbar fluid bg='dark' variant='dark'>
-        <Container fluid style={{ margin: 0 }}>
-          <Navbar.Brand href='#home'>MyFlixx Movies</Navbar.Brand>
-          <Nav className='me-auto' style={{ padding: "1rem 2rem" }}>
-            <Nav.Link href='#home'>Movies</Nav.Link>
-            <Nav.Link href='#features'>Features</Nav.Link>
-            <Nav.Link href='#pricing'>Login</Nav.Link>
+      <Navbar className='main-view-nav' fluid>
+        <Container classname='nav-container' fluid>
+          <Navbar.Brand className='nav-text nav-logo' href='#home'>
+            MyFlixx Movies
+          </Navbar.Brand>
+          <Nav className='nav-main'>
+            <Nav.Link className='nav-text' href='#home'>
+              Movies
+            </Nav.Link>
+            <Nav.Link className='nav-text' href='#features'>
+              Features
+            </Nav.Link>
+            <Nav.Link className='nav-text' href='#pricing'>
+              Login
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>

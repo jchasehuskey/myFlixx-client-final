@@ -11,7 +11,7 @@ class MyFlixApplication extends React.Component {
   render() {
     return (
       //padding to zero takes away from sides of screen
-      <Container fluid style={{ padding: 0 }}>
+      <Container className='container-index ' fluid style={{ padding: 0 }}>
         <MainView />
       </Container>
     );

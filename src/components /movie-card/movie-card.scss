@@ -1,6 +1,7 @@
 $bg-color: #212529;
 $title-color: #a5d8ff;
 $secondary-black: #212529;
+$title-color-secondary: #f783ac;
 // font-family: "Playfair Display SC", serif;
 
 .card-container {
@@ -21,6 +22,7 @@ $secondary-black: #212529;
   color: #fff !important;
   font-weight: 500 !important;
   color: $title-color !important;
+  // color: $title-color-secondary !important;
 }
 
 .card-body {
@@ -49,4 +51,10 @@ $secondary-black: #212529;
 
 .card-button:hover {
   background-color: $secondary-black !important;
+}
+
+.text:hover {
+  transition: 200ms;
+
+  color: $title-color-secondary !important;
 }

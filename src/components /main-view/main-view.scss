@@ -1,11 +1,42 @@
-$nav-text: #da77f2;
+// $nav-text: #da77f2;
 $nav-background: #212529;
 $body-background: #343a40;
+$nav-text: #f783ac;
 
 .nav-text {
-  color: $nav-text;
+  color: $nav-text !important;
+}
+
+Nav a:hover {
+  text-decoration: underline !important;
 }
 
 .main-view-nav {
   background-color: $nav-background !important;
+  //play around with nav padding
+  padding: 1.5rem 3rem !important;
 }
+
+.main-view-nav:hover {
+  background-color: rgba(0, 0, 0, 0.918) !important;
+  transition: all 800ms;
+}
+
+// .main-view-container {
+//   background-color: rgba(128, 0, 128, 0.335) !important;
+// }
+
+// .main-view-container:hover {
+//   transition: all 800ms;
+//   background-color: $body-background !important;
+// }
+
+// .navbar .nav-text:hover {
+//   color: #fff !important;
+//   transition: all 800ms;
+// }
+
+// .main-view-container:hover {
+//   background-color: #d977f289 !important;
+//   transition: all 800ms;
+// }

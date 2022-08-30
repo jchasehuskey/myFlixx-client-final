@@ -1,5 +1,29 @@
 $nav-background: #212529;
+
+$body-background: #343a40;
+$nav-text: #f783ac;
 //font-family: 'Inter', sans-serif;
+
+// .nav-main {
+//   padding: 1.5rem 3rem !important;
+// }
+
+.nav-text {
+  color: $nav-text !important;
+}
+
+Nav a:hover {
+  text-decoration: underline !important;
+}
+
+.main-view-nav {
+  background-color: $nav-background !important;
+}
+
+.main-view-nav:hover {
+  background-color: rgba(0, 0, 0, 0.918) !important;
+  transition: all 800ms;
+}
 
 JSX CSS #classicformpage .view {
   background-image: url("http://mdbootstrap.com/img/Photos/Others/images/91.webp");
@@ -36,9 +60,9 @@ JSX CSS #classicformpage .view {
   line-height: 1.7;
 }
 
-#classicformpage .navbar {
-  transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-}
+// #classicformpage .navbar {
+//   transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+// }
 
 #classicformpage .top-nav-collapse {
   background: #424f95 !important;
@@ -55,10 +79,10 @@ JSX CSS #classicformpage .view {
 }
 //how can i get this to wokr?
 
-.main-view-nav {
-  background-color: $nav-background !important;
-  background-color: white !important;
-}
+// .main-view-nav {
+//   background-color: $nav-background !important;
+//   background-color: white !important;
+// }
 
 .nav {
   font-family: "Inter", sans-serif !important;

@@ -1,0 +1,50 @@
+$secondary-black: #212529;
+// $description-title: #da77f2;
+// $description-title: #f783ac;
+$description-title: #a5d8ff;
+
+* {
+  font-family: "Inter", sans-serif !important;
+}
+
+.movie-view {
+  height: 100vh !important;
+  margin-top: 4rem !important;
+}
+
+.movie-img {
+  //   padding: 8px 12px;
+  //   box-shadow: 0 4px 8px solid black !important;
+  //   background-color: red;
+  width: 20rem;
+  height: 24rem;
+}
+
+.movie-title {
+  margin-top: 2rem !important;
+  background-color: $secondary-black;
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 9px;
+  color: #fff;
+}
+
+.description-keyword {
+  margin-top: 2rem;
+  color: $description-title;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.movie-description {
+  margin-top: 0.6rem;
+  background-color: $secondary-black;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 9px;
+  color: #fff;
+}
+
+.movie-view button {
+  margin-top: 2rem;
+}

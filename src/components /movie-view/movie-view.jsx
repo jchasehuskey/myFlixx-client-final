@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button, Container, Col, Row, Card } from "react-bootstrap";
+import "./movie-view.scss";
 
 export class MovieView extends React.Component {
   render() {
@@ -10,28 +11,36 @@ export class MovieView extends React.Component {
       <Container className='movie-view'>
         <Row>
           <Col className='movie-poster d-flex justify-content-center'>
-            <img
-              src={movie.ImagePath}
-              style={{ width: "20rem", height: "24rem" }}
-            />
+            <img className='movie-img s' src={movie.ImagePath} />
           </Col>
-        </Row>
-        <Row className='movie-title'>
-          <Col className='label'>Title: </Col>
-          <Col className='value'>{movie.Title}</Col>
-        </Row>
+          <Col>
+            <div className='movie-title label value'>Title: {movie.Title}</div>
+            <div className='description-keyword' label>
+              Description:
+            </div>
+            <div className='movie-description  value'>{movie.Description}</div>
+            <Button
+              onClick={() => {
+                onBackClick(null);
+              }}
+            >
+              Back
+            </Button>
+          </Col>
 
-        <Row className='movie-description'>
-          <Col className='label'>Description: </Col>
-          <Col className='value'>{movie.Description}</Col>
+          {/* </Row>
+        <Row className='movie-title'> */}
+          {/* <Col className='label'>Title: </Col> */}
+          {/* <Col className='movie-title label value'>Title: {movie.Title}</Col> */}
+          {/* </Row> */}
+
+          {/* <Row className='movie-description'> */}
+          {/* <Col className='label'>Description: </Col> */}
+
+          {/* <Col className='movie-description label value'>
+            Description: {movie.Description}
+          </Col> */}
         </Row>
-        <Button
-          onClick={() => {
-            onBackClick(null);
-          }}
-        >
-          Back
-        </Button>
       </Container>
     );
   }

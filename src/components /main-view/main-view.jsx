@@ -72,11 +72,11 @@ export class MainView extends React.Component {
     return (
       <div>
         <Navbar className='main-view-nav' fluid>
-          <Container fluid style={{ margin: 0 }}>
-            <Navbar.Brand className='nav-text' href='#home'>
+          <Container classname='nav-container' fluid>
+            <Navbar.Brand className='nav-text nav-logo' href='#home'>
               MyFlixx Movies
             </Navbar.Brand>
-            <Nav style={{ padding: "1rem 2rem" }}>
+            <Nav>
               <Nav.Link className='nav-text' href='#home'>
                 Movies
               </Nav.Link>
@@ -89,8 +89,8 @@ export class MainView extends React.Component {
             </Nav>
           </Container>
         </Navbar>
-        <Container fluid className='bg-dark'>
-          <Row className='main-view justify-content-md-center'>
+        <Container fluid className='bg-dark main-view-container'>
+          {/* <Row className='main-view justify-content-md-center'>
             {selectedMovie ? (
               <Col md={8}>
                 <MovieView
@@ -113,7 +113,34 @@ export class MainView extends React.Component {
                 </Col>
               ))
             )}
-          </Row>
+          </Row> */}
+
+          {selectedMovie ? ( //column below was originally 9
+            <Row className=''>
+              <Col lg={12}>
+                <MovieView
+                  movie={selectedMovie}
+                  onBackClick={(newSelectedMovie) => {
+                    this.setSelectedMovie(newSelectedMovie);
+                  }}
+                />
+              </Col>
+            </Row>
+          ) : (
+            <Row className='justify-content-lg-center'>
+              {movies.map((movie) => (
+                <Col lg={3} md={4} sm={6}>
+                  <MovieCard
+                    key={movie._id}
+                    movie={movie}
+                    onMovieClick={(newSelectedMovie) => {
+                      this.setSelectedMovie(newSelectedMovie);
+                    }}
+                  />
+                </Col>
+              ))}
+            </Row>
+          )}
         </Container>
       </div>
     );
