@@ -37,40 +37,12 @@ Nav a:hover {
   width: 8rem;
 }
 
-JSX CSS #classicformpage .view {
-  height: 100vh;
-  background-image: url("http://mdbootstrap.com/img/Photos/Others/images/91.webp");
+#classicformpage {
+  max-height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-#classicformpage .gradient {
-  background: -webkit-linear-gradient(45deg, #000000b3, #480f9066 100%);
-  background: -webkit-gradient(linear, 45deg, from(#000000b3, #480f9066 100%) );
-  background: linear-gradient(45deg, #000000b3, #480f9066 100%);
-}
-
-#classicformpage .card {
-  background-color: #7e7bd733;
-}
-
-#classicformpage h6 {
-  line-height: 1.7;
-}
-
-#classicformpage .navbar {
-  transition: background .5s ease-in-out, padding .5s ease-in-out;
-}
-
-#classicformpage .top-nav-collapse {
-  background: #424f95 !important;
-}
-
-@media (max-width: 768px) {
-  #classicformpage .navbar:not(.top-nav-collapse) {
-    background: #424f95 !important;
-  }
+  padding-bottom: 32rem;
 }
 
 #classicformpage label {
@@ -88,6 +60,7 @@ JSX CSS #classicformpage .view {
 .card-container {
   margin-top: 3rem;
   margin-bottom: 2rem;
+  width: 20rem !important;
 }
 
 .movie-card {
@@ -101,8 +74,8 @@ JSX CSS #classicformpage .view {
   color: #fff !important;
   color: #a5d8ff !important;
   font-family: Playfair Display SC, serif !important;
-  font-size: .9rem !important;
-  font-weight: 500 !important;
+  font-size: .8rem !important;
+  font-weight: 700 !important;
 }
 
 .card-body {
@@ -210,21 +183,6 @@ Nav a:hover {
   margin-top: 2rem;
 }
 
-JSX CSS #classicformpage .view {
-  height: 100vh;
-  filter: brightness();
-  background-image: url("http://mdbootstrap.com/img/Photos/Others/images/91.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#classicformpage .gradient {
-  background: -webkit-linear-gradient(45deg, #000000b3, #480f9066 100%);
-  background: -webkit-gradient(linear, 45deg, from(#000000b3, #480f9066 100%) );
-  background: linear-gradient(45deg, #000000b3, #480f9066 100%);
-}
-
 #classicformpage .card {
   background-color: #7e7bd733;
 }
@@ -235,12 +193,6 @@ JSX CSS #classicformpage .view {
 
 #classicformpage .top-nav-collapse {
   background: #424f95 !important;
-}
-
-@media (max-width: 768px) {
-  #classicformpage .navbar:not(.top-nav-collapse) {
-    background: #424f95 !important;
-  }
 }
 
 #classicformpage label {
@@ -273,6 +225,10 @@ Nav a:hover {
 .main-view-nav:hover {
   transition: all .8s;
   background-color: #000000ea !important;
+}
+
+.main-view-container {
+  width: 100% !important;
 }
 
 .my-flix {

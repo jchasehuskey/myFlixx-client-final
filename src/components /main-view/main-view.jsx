@@ -76,7 +76,7 @@ export class MainView extends React.Component {
             <Navbar.Brand className='nav-text nav-logo' href='#home'>
               MyFlixx Movies
             </Navbar.Brand>
-            <Nav>
+            <Nav className='nav-main'>
               <Nav.Link className='nav-text' href='#home'>
                 Movies
               </Nav.Link>

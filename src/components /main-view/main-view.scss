@@ -26,21 +26,6 @@ Nav a:hover {
   transition: all 800ms;
 }
 
-// .main-view-container {
-//   background-color: rgba(128, 0, 128, 0.335) !important;
-// }
-
-// .main-view-container:hover {
-//   transition: all 800ms;
-//   background-color: $body-background !important;
-// }
-
-// .navbar .nav-text:hover {
-//   color: #fff !important;
-//   transition: all 800ms;
-// }
-
-// .main-view-container:hover {
-//   background-color: #d977f289 !important;
-//   transition: all 800ms;
-// }
+.main-view-container {
+  width: 100% !important;
+}

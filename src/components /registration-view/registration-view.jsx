@@ -34,18 +34,8 @@ export function RegistrationView(props) {
       id='classicformpage'
       // className='bg-dark '
       style={{
-        paddingBottom: "27rem",
         backgroundImage:
           "url(" + require(".././images/denverSkyline.jpeg") + ")",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        maxHeight: "100vh",
-
-        //aligns perfectly with bottom :)
-
-        //need to figure out how to make padding 100vh for all screens and widths
-        //container was originally 28 rem btw below navbar***
       }}
     >
       <Navbar className='main-view-nav' fluid>
@@ -123,7 +113,6 @@ export function RegistrationView(props) {
 
                   <Button
                     className='registration-button'
-                    style={{ marginTop: 20 }}
                     type='submit'
                     onClick={handleSubmit}
                   >

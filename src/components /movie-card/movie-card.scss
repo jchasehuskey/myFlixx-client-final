@@ -11,6 +11,8 @@ $title-color-secondary: #f783ac;
 .card-container {
   margin-top: 3rem;
   margin-bottom: 2rem;
+  //this is really important to keep the form of the card below
+  width: 20rem !important;
 }
 
 .movie-card {
@@ -21,11 +23,11 @@ $title-color-secondary: #f783ac;
 }
 
 .card-title-name {
-  font-size: 0.9rem !important;
+  font-size: 0.8rem !important;
   font-family: Playfair Display SC, serif !important;
 
   color: #fff !important;
-  font-weight: 500 !important;
+  font-weight: 700 !important;
   color: $title-color !important;
   // color: $title-color-secondary !important;
 }

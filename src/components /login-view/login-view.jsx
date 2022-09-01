@@ -33,13 +33,13 @@ export function LoginView(props) {
       id='classicformpage'
       // className='bg-dark '
       style={{
-        paddingBottom: "27rem",
+        // paddingBottom: "27rem",
         backgroundImage:
           "url(" + require(".././images/denverSkyline.jpeg") + ")",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        maxHeight: "100vh", //aligns perfectly with bottom :)
+        // backgroundPosition: "center",
+        // backgroundSize: "cover",
+        // backgroundRepeat: "no-repeat",
+        // maxHeight: "100vh", //aligns perfectly with bottom :)
       }}
     >
       <Navbar className='main-view-nav' fluid>
