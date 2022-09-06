@@ -11,6 +11,29 @@ $nav-text: #f783ac;
   color: $nav-text !important;
 }
 
+//this is only if using dropdown, otherwise delete
+.navbar-light .navbar-nav .nav-link {
+  color: $nav-text !important;
+}
+
+.dropdown-menu {
+  background-color: $nav-background !important;
+  min-width: 0 !important;
+}
+
+.dropdown-item {
+  background-color: $nav-background !important;
+}
+
+.dropdown-menu:hover {
+  background-color: rgba(0, 0, 0, 0.918) !important;
+  transition: all 800ms;
+}
+.dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.918) !important;
+  transition: all 800ms;
+}
+
 Nav a:hover {
   text-decoration: underline !important;
 }

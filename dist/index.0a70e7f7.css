@@ -171,7 +171,7 @@ Nav a:hover {
 
 .main-view-nav:hover {
   transition: all .8s;
-  background-color: #000000ea !important;
+  background-color: red !important;
 }
 
 .container-register {
@@ -181,6 +181,14 @@ Nav a:hover {
 
 .registration-button {
   margin-top: 2rem;
+}
+
+#classicformpage {
+  max-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 32rem;
 }
 
 #classicformpage .card {
@@ -209,8 +217,22 @@ Nav a:hover {
   font-family: Inter, sans-serif !important;
 }
 
-.nav-text {
+.nav-text, .navbar-light .navbar-nav .nav-link {
   color: #f783ac !important;
+}
+
+.dropdown-menu {
+  min-width: 0 !important;
+  background-color: #212529 !important;
+}
+
+.dropdown-item {
+  background-color: #212529 !important;
+}
+
+.dropdown-menu:hover, .dropdown-item:hover {
+  transition: all .8s;
+  background-color: #000000ea !important;
 }
 
 Nav a:hover {

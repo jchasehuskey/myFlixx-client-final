@@ -1,6 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Container, Col, Row, Card } from "react-bootstrap";
+import {
+  Button,
+  Container,
+  Col,
+  Row,
+  Card,
+  Nav,
+  Navbar,
+  NavDropdown,
+} from "react-bootstrap";
 import "./movie-view.scss";
 
 export class MovieView extends React.Component {

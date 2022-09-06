@@ -4,7 +4,7 @@ import { RegistrationView } from "../registration-view/registration-view";
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
-import { Row, Col, Nav, Navbar, Container } from "react-bootstrap";
+import { Row, Col, Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
 import "./main-view.scss";
 
 export class MainView extends React.Component {
@@ -19,17 +19,28 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get("https://myfavflixdb.herokuapp.com/movies")
-      .then((response) => {
-        this.setState({
-          movies: response.data,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
+    let accessToken = localStorage.getItem("token");
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem("user"),
       });
+      this.getMovies(accessToken);
+    }
   }
+
+  //may not need this anymore
+  // componentDidMount() {
+  //   axios
+  //     .get("https://myfavflixdb.herokuapp.com/movies")
+  //     .then((response) => {
+  //       this.setState({
+  //         movies: response.data,
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 
   getMovies(token) {
     axios
@@ -72,6 +83,15 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
+  //when user logs out
+  onLoggedOut() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    this.setState({
+      user: null,
+    });
+  }
+
   //When a user successfully registers
   onRegistration(register) {
     this.setState({
@@ -107,6 +127,7 @@ export class MainView extends React.Component {
             <Navbar.Brand className='nav-text nav-logo' href='#home'>
               MyFlixx Movies
             </Navbar.Brand>
+
             <Nav className='nav-main'>
               <Nav.Link className='nav-text' href='#home'>
                 Movies
@@ -117,6 +138,24 @@ export class MainView extends React.Component {
               <Nav.Link className='nav-text' href='#pricing'>
                 Login
               </Nav.Link>
+              {/* this dropdown is not necessary */}
+              <NavDropdown
+                className='nav-text'
+                id='nav-dropdown-dark-example'
+                title='Account'
+                menuVariant='dark'
+              >
+                <NavDropdown.Item
+                  className='nav-text'
+                  href='#action/3.1'
+                  //see how this works below
+                  onClick={() => {
+                    this.onLoggedOut();
+                  }}
+                >
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
             </Nav>
           </Container>
         </Navbar>

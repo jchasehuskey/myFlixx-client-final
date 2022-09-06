@@ -26,6 +26,7 @@ Nav a:hover {
 
 .main-view-nav:hover {
   background-color: rgba(0, 0, 0, 0.918) !important;
+  background-color: red !important;
   transition: all 800ms;
 }
 
@@ -36,6 +37,14 @@ Nav a:hover {
 
 .registration-button {
   margin-top: 2rem;
+}
+
+#classicformpage {
+  padding-bottom: 32rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-height: 100vh; //aligns perfectly with bottom :)
 }
 
 // JSX CSS #classicformpage .view {

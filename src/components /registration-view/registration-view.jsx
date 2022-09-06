@@ -21,6 +21,12 @@ export function RegistrationView(props) {
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
 
+  //declare hooks for each input''
+  const [usernameErr, setUsernameErr] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
+  const [emailErr, setEmailErr] = useState("");
+  const [birthdateErr, setBirthdateErr] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password, email, birthdate);
