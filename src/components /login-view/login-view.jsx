@@ -12,6 +12,7 @@ import {
   CardGroup,
 } from "react-bootstrap";
 import "./login-view.scss";
+import axios from "axios";
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");
@@ -19,27 +20,35 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    props.onLoggedIn(username);
+    axios
+      .post("https://myfavflixdb.herokuapp.com/login", {
+        Username: username,
+        Password: password,
+      })
+      .then((response) => {
+        const data = response.data;
+        props.onLoggedIn(data);
+      })
+      .catch((e) => {
+        console.log("no such user");
+      });
+
+    // console.log(username, password);
+    // props.onLoggedIn(username);
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
     props.onRegister(true);
   };
-  //className='bg-dark ' style={{ paddingBottom: "35rem" }}
+
   return (
     <div
       id='classicformpage'
       // className='bg-dark '
       style={{
-        // paddingBottom: "27rem",
         backgroundImage:
           "url(" + require(".././images/denverSkyline.jpeg") + ")",
-        // backgroundPosition: "center",
-        // backgroundSize: "cover",
-        // backgroundRepeat: "no-repeat",
-        // maxHeight: "100vh", //aligns perfectly with bottom :)
       }}
     >
       <Navbar className='main-view-nav' fluid>

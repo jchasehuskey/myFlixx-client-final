@@ -31,6 +31,22 @@ export class MainView extends React.Component {
       });
   }
 
+  getMovies(token) {
+    axios
+      .get("https://myfavflixdb.herokuapp.com/movies", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        // Assign the result to the state
+        this.setState({
+          movies: response.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   setSelectedMovie(newSelectedMovie) {
     this.setState({
       selectedMovie: newSelectedMovie,
@@ -38,10 +54,22 @@ export class MainView extends React.Component {
   }
 
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
-  onLoggedIn(user) {
+  // onLoggedIn(user) {
+  //   this.setState({
+  //     user,
+  //   });
+  // }
+
+  //  src/components/main-view/main-view.jsx
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      user,
+      user: authData.user.Username,
     });
+
+    localStorage.setItem("token", authData.token);
+    localStorage.setItem("user", authData.user.Username);
+    this.getMovies(authData.token);
   }
 
   //When a user successfully registers
@@ -53,16 +81,19 @@ export class MainView extends React.Component {
   render() {
     const { movies, selectedMovie, user, register } = this.state;
 
-    if (!register)
-      return (
-        <RegistrationView
-          onRegistration={(register) => this.onRegistration(register)}
-        />
-      );
-
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
     if (!user)
       return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+
+    // if (user) return <MainView />;
+
+    //only turned this off for tesing*********
+    // if (!register)
+    //   return (
+    //     <RegistrationView
+    //       onRegistration={(register) => this.onRegistration(register)}
+    //     />
+    //   );
 
     // Before the movies have been loaded
     if (movies.length === 0) return <div className='main-view' />;
@@ -72,7 +103,7 @@ export class MainView extends React.Component {
     return (
       <div>
         <Navbar className='main-view-nav' fluid>
-          <Container classname='nav-container' fluid>
+          <Container className='nav-container' fluid>
             <Navbar.Brand className='nav-text nav-logo' href='#home'>
               MyFlixx Movies
             </Navbar.Brand>
@@ -90,31 +121,6 @@ export class MainView extends React.Component {
           </Container>
         </Navbar>
         <Container fluid className='bg-dark main-view-container'>
-          {/* <Row className='main-view justify-content-md-center'>
-            {selectedMovie ? (
-              <Col md={8}>
-                <MovieView
-                  movie={selectedMovie}
-                  onBackClick={(newSelectedMovie) => {
-                    this.setSelectedMovie(newSelectedMovie);
-                  }}
-                />
-              </Col>
-            ) : (
-              movies.map((movie) => (
-                <Col md={3}>
-                  <MovieCard
-                    key={movie._id}
-                    movie={movie}
-                    onMovieClick={(newSelectedMovie) => {
-                      this.setSelectedMovie(newSelectedMovie);
-                    }}
-                  />
-                </Col>
-              ))
-            )}
-          </Row> */}
-
           {selectedMovie ? ( //column below was originally 9
             <Row className=''>
               <Col lg={12}>

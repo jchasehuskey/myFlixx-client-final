@@ -32,14 +32,13 @@ export function RegistrationView(props) {
   return (
     <div
       id='classicformpage'
-      // className='bg-dark '
       style={{
         backgroundImage:
           "url(" + require(".././images/denverSkyline.jpeg") + ")",
       }}
     >
       <Navbar className='main-view-nav' fluid>
-        <Container classname='nav-container' fluid>
+        <Container className='nav-container' fluid>
           <Navbar.Brand className='nav-text nav-logo' href='#home'>
             MyFlixx Movies
           </Navbar.Brand>

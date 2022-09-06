@@ -1,5 +1,240 @@
 .my-flix {
   color: #4682b4;
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  font-family: Inter, sans-serif !important;
+}
+
+.card-container {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  width: 20rem !important;
+}
+
+.movie-card {
+  border-radius: 50%;
+  margin: 4px;
+  padding: 2px;
+  background-color: #212529 !important;
+}
+
+.card-title-name {
+  color: #fff !important;
+  color: #a5d8ff !important;
+  font-family: Playfair Display SC, serif !important;
+  font-size: .8rem !important;
+  font-weight: 700 !important;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.description {
+  height: 2rem;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 24rem;
+}
+
+.card-button {
+  margin-top: .8rem;
+  color: beige !important;
+  background: #ffffff89 !important;
+}
+
+.card-button:hover {
+  background-color: #212529 !important;
+}
+
+.text:hover {
+  transition: all .2s;
+  color: #f783ac !important;
+}
+
+* {
+  font-family: Inter, sans-serif !important;
+}
+
+.movie-view {
+  height: 100vh !important;
+  margin-top: 4rem !important;
+}
+
+.movie-img {
+  width: 20rem;
+  height: 24rem;
+}
+
+.movie-title {
+  color: #fff;
+  background-color: #212529;
+  border-radius: 9px;
+  padding: 4px 8px;
+  display: inline-block;
+  margin-top: 2rem !important;
+}
+
+.description-keyword {
+  color: #a5d8ff;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.movie-description {
+  color: #fff;
+  background-color: #212529;
+  border-radius: 9px;
+  margin-top: .6rem;
+  padding: 8px 12px;
+  display: inline-block;
+}
+
+.movie-view button {
+  margin-top: 2rem;
+}
+
+* {
+  font-family: Inter, sans-serif;
+}
+
+.nav-text {
+  color: #f783ac !important;
+}
+
+Nav a:hover {
+  text-decoration: underline !important;
+}
+
+.main-view-nav {
+  background-color: #212529 !important;
+}
+
+.main-view-nav:hover {
+  transition: all .8s;
+  background-color: #000000ea !important;
+}
+
+.container-form {
+  width: 28rem !important;
+}
+
+.card-styling {
+  margin-top: 10rem;
+  margin-bottom: 3rem;
+}
+
+.login-button {
+  width: 5rem;
+  margin-right: 1rem;
+}
+
+.register-button {
+  width: 8rem;
+}
+
+#classicformpage {
+  max-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 32rem;
+}
+
+#classicformpage label {
+  color: #fff !important;
+}
+
+.main-view-nav {
+  background-color: #212529 !important;
+}
+
+* {
+  font-family: Inter, sans-serif !important;
+}
+
+.nav-text {
+  color: #f783ac !important;
+}
+
+Nav a:hover {
+  text-decoration: underline !important;
+}
+
+.main-view-nav {
+  background-color: #212529 !important;
+}
+
+.main-view-nav:hover {
+  transition: all .8s;
+  background-color: #000000ea !important;
+}
+
+.container-register {
+  width: 56rem;
+  margin-top: 10rem;
+}
+
+.registration-button {
+  margin-top: 2rem;
+}
+
+#classicformpage .card {
+  background-color: #7e7bd733;
+}
+
+#classicformpage h6 {
+  line-height: 1.7;
+}
+
+#classicformpage .top-nav-collapse {
+  background: #424f95 !important;
+}
+
+#classicformpage label {
+  color: #fff !important;
+}
+
+.nav {
+  color: #fff;
+  font-weight: 700;
+  font-family: Inter, sans-serif !important;
+}
+
+* {
+  font-family: Inter, sans-serif !important;
+}
+
+.nav-text {
+  color: #f783ac !important;
+}
+
+Nav a:hover {
+  text-decoration: underline !important;
+}
+
+.main-view-nav {
+  background-color: #212529 !important;
+  padding: 1.5rem 3rem !important;
+}
+
+.main-view-nav:hover {
+  transition: all .8s;
+  background-color: #000000ea !important;
+}
+
+.main-view-container {
+  width: 100% !important;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */

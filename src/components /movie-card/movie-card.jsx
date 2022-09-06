@@ -44,17 +44,6 @@ export class MovieCard extends React.Component {
         </Row>
       </Container>
     );
-
-    // return (
-    //   <div
-    //     className='movie-card'
-    //     onClick={() => {
-    //       onMovieClick(movie);
-    //     }}
-    //   >
-    //     {movie.Title}
-    //   </div>
-    // );
   }
 }
 
