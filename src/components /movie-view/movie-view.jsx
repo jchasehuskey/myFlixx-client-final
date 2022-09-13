@@ -11,6 +11,7 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import "./movie-view.scss";
+import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component {
   render() {
@@ -28,6 +29,15 @@ export class MovieView extends React.Component {
               Description:
             </div>
             <div className='movie-description  value'>{movie.Description}</div>
+
+            <Link to={`/directors/${movie.Director.Name}`}>
+              <Button variant='link'>Director</Button>
+            </Link>
+
+            <Link to={`/genres/${movie.Genre.Name}`}>
+              <Button variant='link'>Genre</Button>
+            </Link>
+            {/* <Button onClick={goBack}> Back</Button> */}
             <Button
               onClick={() => {
                 onBackClick(null);

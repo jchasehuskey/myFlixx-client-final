@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import PropTypes from "prop-types";
 import {
   Form,
@@ -26,13 +27,104 @@ export function RegistrationView(props) {
   const [passwordErr, setPasswordErr] = useState("");
   const [emailErr, setEmailErr] = useState("");
   const [birthdateErr, setBirthdateErr] = useState("");
+  const [values, setValues] = useState({
+    usernameErr: "",
+    passwordErr: "",
+    emailErr: "",
+    birthdateErr: "",
+  });
+
+  // validate user inputs
+
+  const validate = () => {
+    let isReq = true;
+    setValues((prev) => {
+      return {
+        usernameErr: "",
+        passwordErr: "",
+        emailErr: "",
+        birthdayErr: "",
+      };
+    });
+    if (!username) {
+      // setValues re-defines values through a callback that receives
+      // the previous state of values & must return values updated
+      setValues((prevValues) => {
+        return { ...prevValues, usernameErr: "Username is required." };
+      });
+      isReq = false;
+    } else if (username.length < 6) {
+      setValues((prevValues) => {
+        return {
+          ...prevValues,
+          usernameErr: "Username must be at least 6 characters long.",
+        };
+      });
+    }
+    if (!password) {
+      setValues((prevValues) => {
+        return { ...prevValues, passwordErr: "Password is required." };
+      });
+      isReq = false;
+    } else if (password.length < 6) {
+      setValues((prevValues) => {
+        return {
+          ...prevValues,
+          passwordErr: "Password must be at least 6 characters long.",
+        };
+      });
+      isReq = false;
+    }
+    if (!email) {
+      setValues({
+        ...values,
+        emailErr: "Email is required.",
+      });
+      isReq = false;
+    } else if (email.indexOf("@") === -1) {
+      setValues((prevValues) => {
+        return { ...prevValues, emailErr: "Enter a valid email address." };
+      });
+      isReg = false;
+    }
+    if (!birthdate) {
+      setValues((prevValues) => {
+        return { ...prevValues, birthdateErr: "Enter a valid date." };
+      });
+      isReq = false;
+    }
+    return isReq;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password, email, birthdate);
-    /* Send a request to the server for authentication */
-    /* then call props on registored user(username) */
-    props.onRegistration(username);
+
+    const isReq = validate();
+    if (isReq) {
+      /* Send request to the server for authentication */
+      axios
+        .post("https://myfavflixdb.herokuapp.com/login", {
+          Username: username,
+          Password: password,
+          Email: email,
+          Birthday: birthdate,
+        })
+        .then((response) => {
+          const data = response.data;
+          console.log(data);
+          alert("Registration successful! Please Login.");
+          window.open("/", "_self"); //allows page to open in current tabl
+          // props.onLoggedIn(data);
+        })
+        .catch((e) => {
+          console.log("error registering the user");
+        });
+    }
+
+    // console.log(username, password, email, birthdate);
+    // /* Send a request to the server for authentication */
+    // /* then call props on registored user(username) */
+    // props.onRegistration(username);
   };
 
   return (
@@ -73,7 +165,7 @@ export function RegistrationView(props) {
                 <Card.Body>
                   <Card.Title>Welcome to my Flixx, please register</Card.Title>
                   <Form>
-                    <Form.Group>
+                    <Form.Group controlId='formUsername'>
                       <Form.Label>Username:</Form.Label>
                       <Form.Control
                         type='text'
@@ -82,9 +174,14 @@ export function RegistrationView(props) {
                         onChange={(e) => setUsername(e.target.value)}
                         required
                       />
+                      {values.usernameErr && (
+                        <p className='validation-message'>
+                          {values.usernameErr}
+                        </p>
+                      )}
                     </Form.Group>
 
-                    <Form.Group>
+                    <Form.Group controlId='formPassword'>
                       <Form.Label>Password: </Form.Label>
                       <Form.Control
                         type='password'
@@ -93,8 +190,18 @@ export function RegistrationView(props) {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                       />
+                      {values.passwordErr && (
+                        <p className='validation-message'>
+                          {values.passwordErr}
+                        </p>
+                      )}
+                      {values.usernameErr && (
+                        <p className='validation-message'>
+                          {values.usernameErr}
+                        </p>
+                      )}
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group controlId='formEmail'>
                       <Form.Label>Email: </Form.Label>
                       <Form.Control
                         type='email'
@@ -104,8 +211,11 @@ export function RegistrationView(props) {
                         required
                         minLength='8'
                       />
+                      {values.emailErr && (
+                        <p className='validation-message'>{values.emailErr}</p>
+                      )}
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group controlId='formBirthday'>
                       <Form.Label>Birthday: </Form.Label>
                       <Form.Control
                         type='date'
@@ -113,7 +223,19 @@ export function RegistrationView(props) {
                         onChange={(e) => setBirthdate(e.target.value)}
                         required
                       />
+                      {values.birthdateErr && (
+                        <p className='validation-message'>
+                          {values.birthdateErr}
+                        </p>
+                      )}
                     </Form.Group>
+
+                    {/* not sure about bloe code up to the end of the form  */}
+                    <Link to='/'>
+                      <Button className='col-10 offset-1' variant='link'>
+                        Already registered? Log In
+                      </Button>
+                    </Link>
                   </Form>
 
                   <Button

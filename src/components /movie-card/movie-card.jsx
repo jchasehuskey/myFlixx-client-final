@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 
 import "./movie-card.scss";
+import { Link } from "react-router-dom";
 
 export class MovieCard extends React.Component {
   render() {
-    const { movie, onMovieClick } = this.props;
+    const { movie } = this.props;
     return (
       //container, row, and col -> may not be absolutely necessary.  Not sure if I like it before all was implemented
 
@@ -31,13 +32,16 @@ export class MovieCard extends React.Component {
                 <Card.Text className='description'>
                   {movie.Description}
                 </Card.Text>
-                <Button
+                <Link to={`/movies/${movie._id}`}>
+                  <Button variant='link'>Open</Button>
+                </Link>
+                {/* <Button
                   className='card-button text'
                   onClick={() => onMovieClick(movie)}
                   variant='link'
                 >
                   More details
-                </Button>
+                </Button> */}
               </Card.Body>
             </Card>
           </Col>
@@ -51,7 +55,7 @@ MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    // ImageURL: PropTypes.string.isRequired, //this might be ImagePath
+    // ImageURL: PropTypes.string.isRequired, //this might need to be reinstated
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired,
     }),

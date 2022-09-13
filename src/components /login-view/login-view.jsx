@@ -6,6 +6,7 @@ import {
   Container,
   Nav,
   Navbar,
+  NavDropdown,
   Row,
   Col,
   Card,
@@ -52,7 +53,7 @@ export function LoginView(props) {
       }}
     >
       <Navbar className='main-view-nav' fluid>
-        <Container classname='nav-container' fluid>
+        <Container className='nav-container' fluid>
           <Navbar.Brand className='nav-text nav-logo' href='#home'>
             MyFlixx Movies
           </Navbar.Brand>

@@ -171,7 +171,7 @@ Nav a:hover {
 
 .main-view-nav:hover {
   transition: all .8s;
-  background-color: red !important;
+  background-color: #000000ea !important;
 }
 
 .container-register {
