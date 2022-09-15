@@ -2,36 +2,27 @@ $nav-background: #212529;
 
 $body-background: #343a40;
 $nav-text: #f783ac;
-//font-family: 'Inter', sans-serif;
-
-// .nav-main {
-//   padding: 1.5rem 3rem !important;
-// }
 
 * {
   font-family: "Inter", sans-serif !important;
 }
 
-.nav-text {
-  color: $nav-text !important;
+.main-view {
+  display: block !important;
 }
 
-Nav a:hover {
-  text-decoration: underline !important;
+.main-view div {
+  max-width: 100% !important;
 }
 
-.main-view-nav {
-  background-color: $nav-background !important;
+.register-form {
+  margin-top: 6rem !important;
 }
 
-.main-view-nav:hover {
-  background-color: rgba(0, 0, 0, 0.918) !important;
-  transition: all 800ms;
-}
-
-.container-register {
-  width: 56rem;
-  margin-top: 10rem;
+.register-flex {
+  // margin: 0 auto !important;
+  margin-right: 9rem !important;
+  margin-left: 9rem !important;
 }
 
 .registration-button {
@@ -43,35 +34,8 @@ Nav a:hover {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  max-height: 100vh; //aligns perfectly with bottom :)
+  // max-height: 100vh !important; //aligns perfectly with bottom :)
 }
-
-// JSX CSS #classicformpage .view {
-//   background-image: url("http://mdbootstrap.com/img/Photos/Others/images/91.webp");
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   background-position: center center;
-//   height: 100vh;
-//   filter: brightness(100%);
-// }
-
-// #classicformpage .gradient {
-//   background: -webkit-linear-gradient(
-//     45deg,
-//     rgba(0, 0, 0, 0.7),
-//     rgba(72, 15, 144, 0.4) 100%
-//   );
-//   background: -webkit-gradient(
-//     linear,
-//     45deg,
-//     from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%)
-//   );
-//   background: linear-gradient(
-//     45deg,
-//     rgba(0, 0, 0, 0.7),
-//     rgba(72, 15, 144, 0.4) 100%
-//   );
-// }
 
 #classicformpage .card {
   background-color: rgba(126, 123, 215, 0.2);
@@ -81,32 +45,33 @@ Nav a:hover {
   line-height: 1.7;
 }
 
-// #classicformpage .navbar {
-//   transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-// }
-
 #classicformpage .top-nav-collapse {
   background: #424f95 !important;
 }
 
-// @media (max-width: 768px) {
-//   #classicformpage .navbar:not(.top-nav-collapse) {
-//     background: #424f95 !important;
-//   }
-// }
-
 #classicformpage label {
   color: #fff !important;
 }
-//how can i get this to wokr?
+
+// .nav-text {
+//   color: $nav-text !important;
+// }
+
+// Nav a:hover {
+//   text-decoration: underline !important;
+// }
 
 // .main-view-nav {
 //   background-color: $nav-background !important;
-//   background-color: white !important;
 // }
 
-.nav {
-  font-family: "Inter", sans-serif !important;
-  color: #fff;
-  font-weight: 700;
-}
+// .main-view-nav:hover {
+//   background-color: rgba(0, 0, 0, 0.918) !important;
+//   transition: all 800ms;
+// }
+
+//font-family: 'Inter', sans-serif;
+
+// .nav-main {
+//   padding: 1.5rem 3rem !important;
+// }

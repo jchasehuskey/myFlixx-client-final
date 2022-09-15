@@ -13,6 +13,7 @@ import {
   Nav,
   Navbar,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import "./registration-view.scss";
 
@@ -102,8 +103,9 @@ export function RegistrationView(props) {
     const isReq = validate();
     if (isReq) {
       /* Send request to the server for authentication */
+      //was orginally herokuapp.com/login
       axios
-        .post("https://myfavflixdb.herokuapp.com/login", {
+        .post("https://myfavflixdb.herokuapp.com/users", {
           Username: username,
           Password: password,
           Email: email,
@@ -118,48 +120,26 @@ export function RegistrationView(props) {
         })
         .catch((e) => {
           console.log("error registering the user");
+          alert("unable to register");
         });
     }
-
-    // console.log(username, password, email, birthdate);
-    // /* Send a request to the server for authentication */
-    // /* then call props on registored user(username) */
-    // props.onRegistration(username);
   };
 
   return (
     <div
       id='classicformpage'
+      className='registration-container'
       style={{
         backgroundImage:
           "url(" + require(".././images/denverSkyline.jpeg") + ")",
       }}
     >
-      <Navbar className='main-view-nav' fluid>
-        <Container className='nav-container' fluid>
-          <Navbar.Brand className='nav-text nav-logo' href='#home'>
-            MyFlixx Movies
-          </Navbar.Brand>
-          <Nav className='nav-main'>
-            <Nav.Link className='nav-text' href='#home'>
-              Movies
-            </Nav.Link>
-            <Nav.Link className='nav-text' href='#features'>
-              Features
-            </Nav.Link>
-            <Nav.Link className='nav-text' href='#pricing'>
-              Login
-            </Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-
       <Container className='container-register'>
-        <Row className='d-flex align-items-center'>
+        <Row className='d-flex align-items-center register-flex'>
           <Col>
             <h2>Movie browsing at its finest</h2>
           </Col>
-          <Col>
+          <Col className='register-form'>
             <CardGroup>
               <Card>
                 <Card.Body>
@@ -245,6 +225,10 @@ export function RegistrationView(props) {
                   >
                     Sign up
                   </Button>
+                  <p></p>
+                  <p>
+                    Already registered? <Link to={"/"}>Sign in</Link>
+                  </p>
                 </Card.Body>
               </Card>
             </CardGroup>
@@ -258,3 +242,24 @@ export function RegistrationView(props) {
 RegistrationView.propTypes = {
   onRegistration: PropTypes.func.isRequired,
 };
+
+{
+  /* <Navbar className='main-view-nav' fluid>
+        <Container className='nav-container' fluid>
+          <Navbar.Brand className='nav-text nav-logo' href='#home'>
+            MyFlixx Movies
+          </Navbar.Brand>
+          <Nav className='nav-main'>
+            <Nav.Link className='nav-text' href='#home'>
+              Movies
+            </Nav.Link>
+            <Nav.Link className='nav-text' href='#features'>
+              Features
+            </Nav.Link>
+            <Nav.Link className='nav-text' href='#pricing'>
+              Login
+            </Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar> */
+}

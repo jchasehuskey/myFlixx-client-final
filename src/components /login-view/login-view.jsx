@@ -46,13 +46,13 @@ export function LoginView(props) {
   return (
     <div
       id='classicformpage'
-      // className='bg-dark '
+      className='login-container'
       style={{
         backgroundImage:
           "url(" + require(".././images/denverSkyline.jpeg") + ")",
       }}
     >
-      <Navbar className='main-view-nav' fluid>
+      {/* <Navbar className='main-view-nav' fluid>
         <Container className='nav-container' fluid>
           <Navbar.Brand className='nav-text nav-logo' href='#home'>
             MyFlixx Movies
@@ -69,7 +69,7 @@ export function LoginView(props) {
             </Nav.Link>
           </Nav>
         </Container>
-      </Navbar>
+      </Navbar> */}
 
       <Container className='container-form'>
         <Row>

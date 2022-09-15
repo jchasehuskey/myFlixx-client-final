@@ -38,11 +38,11 @@ Nav a:hover {
 }
 
 #classicformpage {
-  max-height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   padding-bottom: 32rem;
+  max-height: 90vh !important;
 }
 
 #classicformpage label {
@@ -51,6 +51,10 @@ Nav a:hover {
 
 .main-view-nav {
   background-color: #212529 !important;
+}
+
+.login-container {
+  max-width: 100% !important;
 }
 
 * {
@@ -157,26 +161,21 @@ Nav a:hover {
   font-family: Inter, sans-serif !important;
 }
 
-.nav-text {
-  color: #f783ac !important;
+.main-view {
+  display: block !important;
 }
 
-Nav a:hover {
-  text-decoration: underline !important;
+.main-view div {
+  max-width: 100% !important;
 }
 
-.main-view-nav {
-  background-color: #212529 !important;
+.register-form {
+  margin-top: 6rem !important;
 }
 
-.main-view-nav:hover {
-  transition: all .8s;
-  background-color: #000000ea !important;
-}
-
-.container-register {
-  width: 56rem;
-  margin-top: 10rem;
+.register-flex {
+  margin-left: 9rem !important;
+  margin-right: 9rem !important;
 }
 
 .registration-button {
@@ -184,7 +183,6 @@ Nav a:hover {
 }
 
 #classicformpage {
-  max-height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -205,12 +203,6 @@ Nav a:hover {
 
 #classicformpage label {
   color: #fff !important;
-}
-
-.nav {
-  color: #fff;
-  font-weight: 700;
-  font-family: Inter, sans-serif !important;
 }
 
 * {
@@ -251,6 +243,8 @@ Nav a:hover {
 
 .main-view-container {
   width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .my-flix {
