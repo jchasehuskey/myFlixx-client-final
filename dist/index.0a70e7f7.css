@@ -161,11 +161,7 @@ Nav a:hover {
   font-family: Inter, sans-serif !important;
 }
 
-.main-view {
-  display: block !important;
-}
-
-.main-view div {
+.registration-container, .main-view div {
   max-width: 100% !important;
 }
 
@@ -246,6 +242,14 @@ Nav a:hover {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+
+.main-view {
+  display: flex;
+}
+
+
+
+
 
 .my-flix {
   color: #4682b4;
