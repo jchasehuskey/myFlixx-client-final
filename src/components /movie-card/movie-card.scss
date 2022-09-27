@@ -2,6 +2,7 @@ $bg-color: #212529;
 $title-color: #a5d8ff;
 $secondary-black: #212529;
 $title-color-secondary: #f783ac;
+$body-background: #343a40;
 // font-family: "Playfair Display SC", serif;
 
 * {
@@ -20,6 +21,12 @@ $title-color-secondary: #f783ac;
   margin: 4px;
   padding: 2px;
   background-color: $bg-color !important;
+  transition: all 600ms;
+}
+
+.movie-card:hover {
+  background-color: rgba(0, 0, 0, 0.918) !important;
+  scale: 105%;
 }
 
 .card-title-name {
@@ -52,16 +59,23 @@ $title-color-secondary: #f783ac;
 
 .card-button {
   color: beige !important;
+  // color: $body-background !important;
   background: rgba(255, 255, 255, 0.536) !important;
+  background-color: $body-background !important;
   margin-top: 0.8rem;
+  text-decoration: none !important;
 }
 
 .card-button:hover {
   background-color: $secondary-black !important;
+  color: $title-color-secondary !important;
 }
 
-.text:hover {
-  transition: 200ms;
+// .text:hover {
+//   transition: 200ms;
+//   color: $title-color-secondary !important;
+// }
 
-  color: $title-color-secondary !important;
+.button.card-button.btn.btn-link {
+  margin-top: 0 !important;
 }

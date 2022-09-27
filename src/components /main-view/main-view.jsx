@@ -14,6 +14,8 @@ import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { ProfileView } from "../profile-view/profile-view";
+
+import { NavBar } from "../navbar/navbar";
 import { Row, Col, Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
 import "./main-view.scss";
 
@@ -23,6 +25,7 @@ export class MainView extends React.Component {
     this.state = {
       movies: [],
       user: null,
+      favoriteMovies: [],
     };
   }
 
@@ -52,17 +55,71 @@ export class MainView extends React.Component {
       });
   }
 
-  //  src/components/main-view/main-view.jsx
-  onLoggedIn(authData) {
-    console.log(authData);
-    this.setState({
-      user: authData.user.Username,
-    });
+  handleFavorite = (movieId, action) => {
+    const { username, favoriteMovies } = this.state;
+    const accessToken = localStorage.getItem("token");
+    if (accessToken !== null && username !== null) {
+      // Add MovieID to Favorites (local state & webserver)
+      if (action === "add") {
+        this.setState({ favoriteMovies: [...favoriteMovies, movieId] });
+        axios
+          .post(
+            `https://myfavflixdb.herokuapp.com/users/${username}/favorites/${movieId}`,
+            {},
+            {
+              headers: { Authorization: `Bearer ${accessToken}` },
+            }
+          )
+          .then((res) => {
+            console.log(`Movie added to ${username} Favorite movies`);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
 
+        // Remove MovieID from Favorites (local state & webserver)
+      } else if (action === "remove") {
+        this.setState({
+          favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
+        });
+        axios
+          .delete(
+            `https://tmyfavflixdb.herokuapp.com/users/${username}/favorites/${movieId}`,
+            {
+              headers: { Authorization: `Bearer ${accessToken}` },
+            }
+          )
+          .then((res) => {
+            console.log(`Movie removed from ${username} Favorite movies`);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    }
+  };
+
+  //  src/components/main-view/main-view.jsx
+  onLoggedIn = (authData) => {
+    const { username, email, birthday, favoriteMovies } = authData.user;
+    this.setState({ username, favoriteMovies: favoriteMovies || [] });
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
+    // localStorage.setItem("user", username);
+    localStorage.setItem("email", email);
+    localStorage.setItem("birthday", birthday);
     this.getMovies(authData.token);
-  }
+  };
+  // onLoggedIn(authData) {
+  //   console.log(authData);
+  //   this.setState({
+  //     user: authData.user.Username,
+  //   });
+
+  //   localStorage.setItem("token", authData.token);
+  //   localStorage.setItem("user", authData.user.Username);
+  //   this.getMovies(authData.token);
+  // }
 
   //when user logs out
   onLoggedOut() {
@@ -81,51 +138,12 @@ export class MainView extends React.Component {
   //   });
   // }
   render() {
-    const { movies, user } = this.state;
+    const { movies, user, favoriteMovies } = this.state;
     //did have register above***
     return (
       <Router>
         <div>
-          <Navbar className='main-view-nav' fluid>
-            <Container className='nav-container' fluid>
-              <Navbar.Brand className='nav-text nav-logo' href='#home'>
-                MyFlixx Movies
-              </Navbar.Brand>
-
-              <Nav className='nav-main'>
-                <Nav.Link
-                  className='nav-text'
-                  href='https://myfavflixdb.herokuapp.com/users/'
-                >
-                  Movies
-                </Nav.Link>
-                <Nav.Link className='nav-text' href='#features'>
-                  Profile
-                </Nav.Link>
-                <Nav.Link className='nav-text' href='#pricing'>
-                  Login
-                </Nav.Link>
-                {/* this dropdown is not necessary */}
-                <NavDropdown
-                  className='nav-text'
-                  id='nav-dropdown-dark-example'
-                  title='Account'
-                  menuVariant='dark'
-                >
-                  <NavDropdown.Item
-                    className='nav-text'
-                    href='#action/3.1'
-                    //see how this works below
-                    onClick={() => {
-                      this.onLoggedOut();
-                    }}
-                  >
-                    Logout
-                  </NavDropdown.Item>
-                </NavDropdown>
-              </Nav>
-            </Container>
-          </Navbar>
+          <NavBar user={user} />
           <Container fluid className='bg-dark main-view-container'>
             <Row className='main-view  justify-content-md-center'>
               <Route
@@ -143,7 +161,7 @@ export class MainView extends React.Component {
                   //before movies have been loaded
                   if (movies.length === 0) return <div className='main-view' />;
                   return movies.map((m) => (
-                    <Col md={3} key={m._id}>
+                    <Col md={3} sm={6} key={m._id}>
                       <MovieCard movie={m} />
                     </Col>
                   ));
@@ -260,8 +278,8 @@ export class MainView extends React.Component {
                   <Col md={8}>
                     <GenreView
                       genre={
-                        movies.find((m) => m.genre.Name === match.params.name)
-                          .genre
+                        movies.find((m) => m.Genre.Name === match.params.name)
+                          .Genre
                       }
                       onBackClick={() => history.goBack()}
                     />

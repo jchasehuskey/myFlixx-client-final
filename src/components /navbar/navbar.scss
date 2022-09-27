@@ -1,0 +1,77 @@
+$nav-background: #212529;
+
+$body-background: #343a40;
+$nav-text: #f783ac;
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.navbar-logo {
+  color: $nav-text !important;
+}
+
+.nav-text {
+  color: $nav-text !important;
+  text-decoration: none !important;
+}
+
+.nav-text a:hover {
+  text-decoration: none !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+//this is only if using dropdown, otherwise delete
+.navbar-light .navbar-nav .nav-link {
+  color: $nav-text !important;
+}
+
+.dropdown-menu {
+  background-color: $nav-background !important;
+  min-width: 0 !important;
+}
+
+.dropdown-item {
+  background-color: $nav-background !important;
+}
+
+.dropdown-menu:hover {
+  background-color: rgba(0, 0, 0, 0.918) !important;
+  transition: all 800ms;
+}
+.dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.918) !important;
+  transition: all 800ms;
+}
+
+Nav a:hover {
+  text-decoration: underline !important;
+}
+
+.main-view-nav {
+  background-color: $nav-background !important;
+  //play around with nav padding
+  padding: 1.5rem 3rem !important;
+}
+
+.main-view-nav:hover {
+  background-color: rgba(0, 0, 0, 0.918) !important;
+  transition: all 800ms;
+}
+
+.main-view-container {
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.main-view {
+  display: flex;
+}

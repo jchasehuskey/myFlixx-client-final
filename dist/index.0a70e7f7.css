@@ -71,7 +71,13 @@ Nav a:hover {
   border-radius: 50%;
   margin: 4px;
   padding: 2px;
+  transition: all .6s;
   background-color: #212529 !important;
+}
+
+.movie-card:hover {
+  scale: 105%;
+  background-color: #000000ea !important;
 }
 
 .card-title-name {
@@ -102,16 +108,17 @@ Nav a:hover {
 .card-button {
   margin-top: .8rem;
   color: beige !important;
-  background: #ffffff89 !important;
+  background: #343a40 !important;
+  text-decoration: none !important;
 }
 
 .card-button:hover {
+  color: #f783ac !important;
   background-color: #212529 !important;
 }
 
-.text:hover {
-  transition: all .2s;
-  color: #f783ac !important;
+.button.card-button.btn.btn-link {
+  margin-top: 0 !important;
 }
 
 * {
@@ -159,10 +166,6 @@ Nav a:hover {
 
 * {
   font-family: Inter, sans-serif !important;
-}
-
-.registration-container, .main-view div {
-  max-width: 100% !important;
 }
 
 .register-form {
@@ -250,6 +253,73 @@ Nav a:hover {
 
 
 
+
+.fav-movies {
+  background-color: #000;
+}
+
+* {
+  font-family: Inter, sans-serif;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.navbar-logo {
+  color: #f783ac !important;
+}
+
+.nav-text {
+  color: #f783ac !important;
+  text-decoration: none !important;
+}
+
+.nav-text a:hover, a:hover {
+  text-decoration: none !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #f783ac !important;
+}
+
+.dropdown-menu {
+  min-width: 0 !important;
+  background-color: #212529 !important;
+}
+
+.dropdown-item {
+  background-color: #212529 !important;
+}
+
+.dropdown-menu:hover, .dropdown-item:hover {
+  transition: all .8s;
+  background-color: #000000ea !important;
+}
+
+Nav a:hover {
+  text-decoration: underline !important;
+}
+
+.main-view-nav {
+  background-color: #212529 !important;
+  padding: 1.5rem 3rem !important;
+}
+
+.main-view-nav:hover {
+  transition: all .8s;
+  background-color: #000000ea !important;
+}
+
+.main-view-container {
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.main-view {
+  display: flex;
+}
 
 .my-flix {
   color: #4682b4;
