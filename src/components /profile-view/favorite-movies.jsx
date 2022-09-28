@@ -3,14 +3,23 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import { Button, Card, Col } from "react-bootstrap";
+import { Button, Card, Col, Filter } from "react-bootstrap";
 
 import "./profile-view.scss";
 
 export function FavoriteMoviesView(props) {
   const { movies, favoriteMovies, currentUser, token } = props;
 
-  const favoriteMoviesId = favoriteMovies.map((m) => m._id);
+  //   const favoriteMovies = [];
+
+  //new code
+  const favoriteMoviesId = favoriteMovies;
+  {
+    favoriteMovies && favoriteMovies.map((m) => m._id);
+  }
+
+  // old code
+  //   const favoriteMoviesId = favoriteMovies.map((m) => m._id);
 
   const favoriteMoviesList = movies.filter((m) => {
     return favoriteMoviesId.includes(m._id);
@@ -19,7 +28,7 @@ export function FavoriteMoviesView(props) {
   const handleMovieDelete = (movieId) => {
     axios
       .delete(
-        `https://myfavflixdb.herokuapp.comusers/${currentUser}/movies/${movieId}`,
+        `https://myfavflixdb.herokuapp.com/users/${currentUser}/movies/${movieId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

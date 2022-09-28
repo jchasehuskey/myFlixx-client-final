@@ -17,6 +17,7 @@ export function ProfileView(props) {
   // const [favouriteMovies, setFavouriteMovies] = useState([]);
   const currentUser = localStorage.getItem("user");
   const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
 
   const getUser = () => {
     axios
