@@ -209,13 +209,6 @@ export function RegistrationView(props) {
                         </p>
                       )}
                     </Form.Group>
-
-                    {/* not sure about bloe code up to the end of the form  */}
-                    <Link to='/'>
-                      <Button className='col-10 offset-1' variant='link'>
-                        Already registered? Log In
-                      </Button>
-                    </Link>
                   </Form>
 
                   <Button
@@ -226,9 +219,9 @@ export function RegistrationView(props) {
                     Sign up
                   </Button>
                   <p></p>
-                  <p>
-                    Already registered? <Link to={"/"}>Sign in</Link>
-                  </p>
+                  <Button className='login-button'>
+                    <Link to={"/"}>Login</Link>
+                  </Button>
                 </Card.Body>
               </Card>
             </CardGroup>
@@ -240,26 +233,11 @@ export function RegistrationView(props) {
 }
 
 RegistrationView.propTypes = {
-  onRegistration: PropTypes.func.isRequired,
+  register: PropTypes.shape({
+    Name: PropTypes.string.isRequired,
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthdate: PropTypes.string.isRequired,
+  }),
 };
-
-{
-  /* <Navbar className='main-view-nav' fluid>
-        <Container className='nav-container' fluid>
-          <Navbar.Brand className='nav-text nav-logo' href='#home'>
-            MyFlixx Movies
-          </Navbar.Brand>
-          <Nav className='nav-main'>
-            <Nav.Link className='nav-text' href='#home'>
-              Movies
-            </Nav.Link>
-            <Nav.Link className='nav-text' href='#features'>
-              Features
-            </Nav.Link>
-            <Nav.Link className='nav-text' href='#pricing'>
-              Login
-            </Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar> */
-}

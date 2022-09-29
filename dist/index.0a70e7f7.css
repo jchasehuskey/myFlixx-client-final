@@ -33,8 +33,13 @@ Nav a:hover {
   margin-right: 1rem;
 }
 
+.register-button a {
+  color: #fff !important;
+}
+
 .register-button {
   width: 8rem;
+  color: #fff !important;
 }
 
 #classicformpage {
@@ -179,6 +184,10 @@ Nav a:hover {
 
 .registration-button {
   margin-top: 2rem;
+}
+
+.login-button a {
+  color: #fff !important;
 }
 
 #classicformpage {

@@ -31,6 +31,11 @@ $nav-text: #f783ac;
 
 .registration-button {
   margin-top: 2rem;
+  // color: #fff !important;
+}
+
+.login-button a {
+  color: #fff !important;
 }
 
 #classicformpage {
@@ -56,26 +61,3 @@ $nav-text: #f783ac;
 #classicformpage label {
   color: #fff !important;
 }
-
-// .nav-text {
-//   color: $nav-text !important;
-// }
-
-// Nav a:hover {
-//   text-decoration: underline !important;
-// }
-
-// .main-view-nav {
-//   background-color: $nav-background !important;
-// }
-
-// .main-view-nav:hover {
-//   background-color: rgba(0, 0, 0, 0.918) !important;
-//   transition: all 800ms;
-// }
-
-//font-family: 'Inter', sans-serif;
-
-// .nav-main {
-//   padding: 1.5rem 3rem !important;
-// }

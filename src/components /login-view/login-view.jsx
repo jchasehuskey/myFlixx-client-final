@@ -4,14 +4,12 @@ import {
   Form,
   Button,
   Container,
-  Nav,
-  Navbar,
-  NavDropdown,
   Row,
   Col,
   Card,
   CardGroup,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./login-view.scss";
 import axios from "axios";
 
@@ -19,28 +17,50 @@ export function LoginView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post("https://myfavflixdb.herokuapp.com/login", {
-        Username: username,
-        Password: password,
-      })
-      .then((response) => {
-        const data = response.data;
-        props.onLoggedIn(data);
-      })
-      .catch((e) => {
-        console.log("no such user");
-      });
+  // Declare hook for each input
+  const [usernameErr, setUsernameErr] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
 
-    // console.log(username, password);
-    // props.onLoggedIn(username);
+  // validate user inputs
+  const validate = () => {
+    let isReq = true;
+    if (!username) {
+      setUsernameErr("Username Required");
+      isReq = false;
+    } else if (username.length < 5) {
+      setUsernameErr("Username must be atleast 5 characters long");
+      isReq = false;
+    }
+    if (!password) {
+      setPasswordErr("Password Required");
+      isReq = false;
+    } else if (password.length < 6) {
+      setPassword("Password must be atleast 6 characters long");
+      isReq = false;
+    }
+
+    return isReq;
   };
 
-  const handleRegister = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    props.onRegister(true);
+    const isReq = validate();
+    if (isReq) {
+      axios
+        .post("https://myfavflixdb.herokuapp.com/login", {
+          Username: username,
+          Password: password,
+        })
+        .then((response) => {
+          const data = response.data;
+          props.onLoggedIn(data);
+          console.log("succesfully logged in");
+          window.open("/", "_self");
+        })
+        .catch((e) => {
+          console.log("no such user");
+        });
+    }
   };
 
   return (
@@ -52,25 +72,6 @@ export function LoginView(props) {
           "url(" + require(".././images/denverSkyline.jpeg") + ")",
       }}
     >
-      {/* <Navbar className='main-view-nav' fluid>
-        <Container className='nav-container' fluid>
-          <Navbar.Brand className='nav-text nav-logo' href='#home'>
-            MyFlixx Movies
-          </Navbar.Brand>
-          <Nav className='nav-main'>
-            <Nav.Link className='nav-text' href='#home'>
-              Movies
-            </Nav.Link>
-            <Nav.Link className='nav-text' href='#features'>
-              Features
-            </Nav.Link>
-            <Nav.Link className='nav-text' href='#pricing'>
-              Login
-            </Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar> */}
-
       <Container className='container-form'>
         <Row>
           <Col>
@@ -111,13 +112,13 @@ export function LoginView(props) {
               >
                 Submit
               </Button>
+
               <Button
-                className='register=button'
+                className='register-button'
                 variant='primary'
                 type='submit'
-                onClick={handleRegister}
               >
-                Register here
+                <Link to={"/register"}>Register here</Link>
               </Button>
             </div>
           </Col>

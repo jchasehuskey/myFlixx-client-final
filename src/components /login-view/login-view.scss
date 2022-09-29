@@ -38,8 +38,13 @@ Nav a:hover {
   margin-right: 1rem;
 }
 
+.register-button a {
+  color: #fff !important;
+}
+
 .register-button {
   width: 8rem;
+  color: #fff !important;
 }
 
 #classicformpage {
@@ -47,7 +52,7 @@ Nav a:hover {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  max-height: 90vh !important; //aligns perfectly with bottom :)
+  max-height: 90vh !important; //aligns perfectly with bottom :)  was orignially 100vh
 }
 
 #classicformpage label {
