@@ -25,6 +25,10 @@ export function FavoriteMoviesView(props) {
     return favoriteMoviesId.includes(m._id);
   });
 
+  if (!favoriteMovies) {
+    return null;
+  }
+
   const handleMovieDelete = (movieId) => {
     axios
       .delete(

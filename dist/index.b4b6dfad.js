@@ -44521,6 +44521,7 @@ function FavoriteMoviesView(props) {
     const favoriteMoviesList = movies.filter((m)=>{
         return favoriteMoviesId.includes(m._id);
     });
+    if (!favoriteMovies) return null;
     const handleMovieDelete = (movieId)=>{
         (0, _axiosDefault.default).delete(`https://myfavflixdb.herokuapp.com/users/${currentUser}/movies/${movieId}`, {
             headers: {
@@ -44536,7 +44537,7 @@ function FavoriteMoviesView(props) {
             children: "You have no favorite movies yet."
         }, void 0, false, {
             fileName: "src/components /profile-view/favorite-movies.jsx",
-            lineNumber: 46,
+            lineNumber: 50,
             columnNumber: 9
         }, this) : favoriteMoviesList.map((movie)=>{
             return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -44554,12 +44555,12 @@ function FavoriteMoviesView(props) {
                                 src: movie.ImagePath
                             }, void 0, false, {
                                 fileName: "src/components /profile-view/favorite-movies.jsx",
-                                lineNumber: 53,
+                                lineNumber: 57,
                                 columnNumber: 19
                             }, this)
                         }, void 0, false, {
                             fileName: "src/components /profile-view/favorite-movies.jsx",
-                            lineNumber: 52,
+                            lineNumber: 56,
                             columnNumber: 17
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
@@ -44568,14 +44569,14 @@ function FavoriteMoviesView(props) {
                                     children: movie.Title
                                 }, void 0, false, {
                                     fileName: "src/components /profile-view/favorite-movies.jsx",
-                                    lineNumber: 56,
+                                    lineNumber: 60,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                                     children: movie.Description
                                 }, void 0, false, {
                                     fileName: "src/components /profile-view/favorite-movies.jsx",
-                                    lineNumber: 57,
+                                    lineNumber: 61,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -44587,12 +44588,12 @@ function FavoriteMoviesView(props) {
                                         children: "Open"
                                     }, void 0, false, {
                                         fileName: "src/components /profile-view/favorite-movies.jsx",
-                                        lineNumber: 59,
+                                        lineNumber: 63,
                                         columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/components /profile-view/favorite-movies.jsx",
-                                    lineNumber: 58,
+                                    lineNumber: 62,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -44605,30 +44606,30 @@ function FavoriteMoviesView(props) {
                                     children: "Remove"
                                 }, void 0, false, {
                                     fileName: "src/components /profile-view/favorite-movies.jsx",
-                                    lineNumber: 67,
+                                    lineNumber: 71,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/components /profile-view/favorite-movies.jsx",
-                            lineNumber: 55,
+                            lineNumber: 59,
                             columnNumber: 17
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components /profile-view/favorite-movies.jsx",
-                    lineNumber: 51,
+                    lineNumber: 55,
                     columnNumber: 15
                 }, this)
             }, void 0, false, {
                 fileName: "src/components /profile-view/favorite-movies.jsx",
-                lineNumber: 50,
+                lineNumber: 54,
                 columnNumber: 13
             }, this);
         })
     }, void 0, false, {
         fileName: "src/components /profile-view/favorite-movies.jsx",
-        lineNumber: 44,
+        lineNumber: 48,
         columnNumber: 5
     }, this);
 }
