@@ -5,6 +5,8 @@ $nav-text: #f783ac;
 
 * {
   font-family: "Inter", sans-serif !important;
+  //keeps scroll bars from appearing on login/registration view when typing
+  overflow:hidden;
 }
 
 .nav-text {
