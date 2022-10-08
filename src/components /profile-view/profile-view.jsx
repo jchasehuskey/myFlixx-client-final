@@ -72,6 +72,7 @@ export function ProfileView(props) {
       <Row className='mt-5'>
         <h4>Your favorite movies</h4>
       </Row>
+ 
       <Row className='mt-3'>
         <FavoriteMoviesView
           movies={movies}

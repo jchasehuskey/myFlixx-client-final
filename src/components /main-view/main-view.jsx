@@ -26,6 +26,7 @@ export class MainView extends React.Component {
       movies: [],
       user: null,
       favoriteMovies: [],
+      // username:null
     };
   }
 
@@ -84,7 +85,7 @@ export class MainView extends React.Component {
         });
         axios
           .delete(
-            `https://tmyfavflixdb.herokuapp.com/users/${username}/favorites/${movieId}`,
+            `https://myfavflixdb.herokuapp.com/users/${username}/favorites/${movieId}`,
             {
               headers: { Authorization: `Bearer ${accessToken}` },
             }
@@ -110,18 +111,7 @@ export class MainView extends React.Component {
     localStorage.setItem("birthday", birthday);
     this.getMovies(authData.token);
   };
-  // onLoggedIn(authData) {
-  //   console.log(authData);
-  //   this.setState({
-  //     user: authData.user.Username,
-  //   });
 
-  //   localStorage.setItem("token", authData.token);
-  //   localStorage.setItem("user", authData.user.Username);
-  //   this.getMovies(authData.token);
-  // }
-
-  //when user logs out
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -131,12 +121,7 @@ export class MainView extends React.Component {
     window.open("/", "_self");
   }
 
-  // //When a user successfully registers
-  // onRegistration(register) {
-  //   this.setState({
-  //     register,
-  //   });
-  // }
+
   render() {
     const { movies, user, favoriteMovies } = this.state;
     //did have register above***
@@ -190,6 +175,9 @@ export class MainView extends React.Component {
                         user={user}
                         onBackClick={() => history.goBack()}
                         movies={movies}
+                        favoriteMovies={favoriteMovies || []}
+                        handleFavorite={this.handleFavorite}
+
                       />
                     </Col>
                   );
@@ -205,6 +193,9 @@ export class MainView extends React.Component {
                       <UserUpdate
                         user={user}
                         onBackClick={() => history.goBack()}
+                        //may not be necessary below
+                        favoriteMovies={favoriteMovies || []}
+                        handleFavorite={this.handleFavorite}
                       />
                     </Col>
                   );
@@ -229,6 +220,8 @@ export class MainView extends React.Component {
                         movie={movies.find(
                           (m) => m._id === match.params.movieId
                         )}
+                        handleFavorite={this.handleFavorite}
+                        isFavorite={favoriteMovies.includes(match.params.movieId)}
                         onBackClick={() => history.goBack()}
                       />
                     </Col>

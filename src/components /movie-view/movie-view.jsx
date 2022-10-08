@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component {
   render() {
-    const { movie, onBackClick } = this.props;
+    const { movie, onBackClick, isFavorite, handleFavorite } = this.props;
 
     return (
       <Container className='movie-view'>
@@ -45,6 +45,19 @@ export class MovieView extends React.Component {
             >
               Back
             </Button>
+            {!isFavorite?(
+              <Button
+                    className="my-4 ml-2"
+                    variant="outline-primary"
+                    onClick={() => handleFavorite(movie._id, 'add')}
+                  >
+                    add to favorites
+              </Button>
+
+            ):(
+              <div/>
+            )
+          }
           </Col>
         </Row>
       </Container>

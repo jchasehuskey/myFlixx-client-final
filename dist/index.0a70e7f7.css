@@ -169,6 +169,10 @@ Nav a:hover {
   margin-top: 2rem;
 }
 
+
+
+
+
 * {
   font-family: Inter, sans-serif !important;
 }
@@ -213,11 +217,32 @@ Nav a:hover {
   color: #fff !important;
 }
 
-* {
-  font-family: Inter, sans-serif !important;
+.fav-movies {
+  background-color: #000;
 }
 
-.nav-text, .navbar-light .navbar-nav .nav-link {
+* {
+  font-family: Inter, sans-serif;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.navbar-logo {
+  color: #f783ac !important;
+}
+
+.nav-text {
+  color: #f783ac !important;
+  text-decoration: none !important;
+}
+
+.nav-text a:hover, a:hover {
+  text-decoration: none !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
   color: #f783ac !important;
 }
 
@@ -259,36 +284,11 @@ Nav a:hover {
   display: flex;
 }
 
-
-
-
-
-.fav-movies {
-  background-color: #000;
-}
-
 * {
-  font-family: Inter, sans-serif;
+  font-family: Inter, sans-serif !important;
 }
 
-a:hover {
-  text-decoration: none !important;
-}
-
-.navbar-logo {
-  color: #f783ac !important;
-}
-
-.nav-text {
-  color: #f783ac !important;
-  text-decoration: none !important;
-}
-
-.nav-text a:hover, a:hover {
-  text-decoration: none !important;
-}
-
-.navbar-light .navbar-nav .nav-link {
+.nav-text, .navbar-light .navbar-nav .nav-link {
   color: #f783ac !important;
 }
 

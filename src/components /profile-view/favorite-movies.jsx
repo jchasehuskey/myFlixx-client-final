@@ -8,9 +8,10 @@ import { Button, Card, Col, Filter } from "react-bootstrap";
 import "./profile-view.scss";
 
 export function FavoriteMoviesView(props) {
-  const { movies, favoriteMovies, currentUser, token } = props;
+  const { movies,  currentUser, token, handleFavorite } = props;
 
-  //   const favoriteMovies = [];
+  //when setting this to empty array, I do not get bug.  Will see if this helps or not.
+    const favoriteMovies = [];
 
   //new code
   const favoriteMoviesId = favoriteMovies;
@@ -29,20 +30,20 @@ export function FavoriteMoviesView(props) {
     return null;
   }
 
-  const handleMovieDelete = (movieId) => {
-    axios
-      .delete(
-        `https://myfavflixdb.herokuapp.com/users/${currentUser}/movies/${movieId}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .then(() => {
-        alert(`The movie was successfully deleted.`);
-        window.open("/users/:username", "_self");
-      })
-      .catch((error) => console.error(error));
-  };
+  // const handleMovieDelete = (movieId) => {
+  //   axios
+  //     .delete(
+  //       `https://myfavflixdb.herokuapp.com/users/${currentUser}/movies/${movieId}`,
+  //       {
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       }
+  //     )
+  //     .then(() => {
+  //       alert(`The movie was successfully deleted.`);
+  //       window.open("/users/:username", "_self");
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
 
   return (
     <Fragment>
@@ -73,7 +74,8 @@ export function FavoriteMoviesView(props) {
                     variant='outline-primary'
                     size='sm'
                     onClick={() => {
-                      handleMovieDelete(movie._id);
+                      // handleMovieDelete(movie._id, 'remove');
+                      handleFavorite(movie._id, 'remove');
                     }}
                   >
                     Remove

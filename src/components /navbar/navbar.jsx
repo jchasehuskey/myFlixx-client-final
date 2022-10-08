@@ -60,7 +60,7 @@ export function NavBar() {
           )}
           {!isAuth() && (
             <Nav.Link className='nav-text' href='/register'>
-              Sign up
+              Sign up 
             </Nav.Link>
           )}
         </Nav>
