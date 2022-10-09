@@ -14,7 +14,7 @@ export function ProfileView(props) {
   const [user, setUser] = useState(props.user);
   const [movies, setMovies] = useState(props.movies);
   const [favoriteMovies, setFavoriteMovies] = useState(props.favoriteMovies);
-  // const [favouriteMovies, setFavouriteMovies] = useState([]);
+
   const currentUser = localStorage.getItem("user");
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
@@ -79,6 +79,7 @@ export function ProfileView(props) {
           favoriteMovies={favoriteMovies}
           currentUser={currentUser}
           token={token}
+    
         />
       </Row>
       <UpdateUser user={user} />

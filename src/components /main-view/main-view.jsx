@@ -14,9 +14,8 @@ import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { ProfileView } from "../profile-view/profile-view";
-
 import { NavBar } from "../navbar/navbar";
-import { Row, Col, Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import "./main-view.scss";
 
 export class MainView extends React.Component {
@@ -26,6 +25,8 @@ export class MainView extends React.Component {
       movies: [],
       user: null,
       favoriteMovies: [],
+
+      /////typicallly this is removed
       // username:null
     };
   }
@@ -99,6 +100,8 @@ export class MainView extends React.Component {
       }
     }
   };
+
+  
 
   //  src/components/main-view/main-view.jsx
   onLoggedIn = (authData) => {
@@ -175,8 +178,8 @@ export class MainView extends React.Component {
                         user={user}
                         onBackClick={() => history.goBack()}
                         movies={movies}
-                        favoriteMovies={favoriteMovies || []}
-                        handleFavorite={this.handleFavorite}
+                        // favoriteMovies={favoriteMovies || []}
+                        // handleFavorite={this.handleFavorite}
 
                       />
                     </Col>
