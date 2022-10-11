@@ -1,44 +1,98 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
+import PropTypes from 'prop-types';
+import {
+  Container,
+  Form,
+  Button,
+  Card,
+  CardGroup,
+  Col,
+  Link,
+  Row
+} from 'react-bootstrap';
 
-import { Button, Col, Container, Row } from "react-bootstrap";
 import { UpdateUser } from "./update-user";
-// import { FavoriteMoviesView } from "./favorite-movies";
-// import { UpdateUser } from "./update-user";
-import { FavoriteMoviesView } from "./favorite-movies";
-// import  FavoriteMovies  from "./favorite-movies";
-// import UpdateUser from "./update-user";
-// import UserInfo from './user-info';
+import { Link } from 'react-router-dom';
 
-// import { FavouriteMoviesView } from "./favourite-movie-view";
+import './profile-view.scss';
+export default function ProfileView(props) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [birthday, setBirthday] = useState('');
+  // Declare hook for each input
+  const [usernameErr, setUsernameErr] = useState('');
+  const [passwordErr, setPasswordErr] = useState('');
+  const [emailErr, setEmailErr] = useState('');
+  const [birthdayErr, setBirthdayErr] = useState('');
+  const { user, favoriteMovies, removeFavorite, onBackClick } = props;
 
-import "./profile-view.scss";
+  // Validate user inputs
+  const validate = () => {
+    let isReq = true;
+    if (!username) {
+      setUsernameErr('Username required');
+      isReq = false;
+    } else if (username.length < 5) {
+      setUsernameErr('Username must be 5 or more characters');
+      isReq = false;
+    }
+    if (!password) {
+      setPasswordErr('Password required');
+      isReq = false;
+    } else if (password.length < 6) {
+      setPasswordErr('Password must be 6 or more characters');
+      isReq = false;
+    }
+    if (!email) {
+      setEmailErr('Email required');
+      isReq = false;
+    } else if (email.indexOf('@') === -1) {
+      setEmailErr('Email must be a valid email address');
+      isReq = false;
+    }
 
-export function ProfileView(props) {
-  const [user, setUser] = useState(props.user);
-  const [movies, setMovies] = useState(props.movies);
-  const [favoriteMovies, setFavoriteMovies] = useState(props.favoriteMovies);
-
-  const currentUser = localStorage.getItem("user");
-  const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
-
-  const getUser = () => {
-    axios
-      .get(`https://myfavflixdb.herokuapp.com/users/${currentUser}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setUser(response.data);
-        setFavoriteMovies(response.data.favoriteMovies);
-      })
-      .catch((error) => console.error(error));
+    return isReq;
   };
 
-  useEffect(() => {
-    getUser();
-  }, []);
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const isReq = validate();
+    const token = localStorage.getItem('token');
+    console.log(isReq);
+    console.log(token);
+    console.log(user);
+    if (isReq && token !== null && user !== null) {
+      axios
+        .put(
+          `https://mats-js-myflixdb.herokuapp.com/users/${user}`,
+
+          {
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: birthday,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((res) => {
+          const data = res.data;
+          console.log(data);
+          alert('Update successful! Please log in with your new credentials');
+          localStorage.clear();
+          window.open('/', '_self');
+        })
+        .catch((e) => {
+          console.error(e);
+          alert('Unable to update user infos :(');
+        });
+    }
+  };
 
   const handleDelete = () => {
     axios
@@ -52,45 +106,76 @@ export function ProfileView(props) {
       })
       .catch((error) => console.error(error));
   };
+  console.log(favoriteMovies);
 
   return (
-    <Container id='profile-form'>
-      <Row>
-        <h4>Your profile</h4>
-      </Row>
-      <Row>
-        <Col className='label'>Username:</Col>
-        <Col className='value'>{user.Username}</Col>
-      </Row>
-      <Row className='mt-3'>
-        <Col className='label'>Password:</Col>
-        <Col className='value'>******</Col>
-      </Row>
-      <Row className='mt-3'>
-        <Col className='label'>Email:</Col>
-        <Col className='value'>{user.Email}</Col>
-      </Row>
-      <Row className='mt-3'>
-        <Col className='label'>Birthday:</Col>
-        <Col className='value'>{user.Birthday}</Col>
-      </Row>
-      <Row className='mt-5'>
+    <Container className="profile-container">
+      <Card bg="dark" text="light" className="profile-card">
+        <Card.Header className="text-center" as="h5">
+          Profile
+        </Card.Header>
+        <Card.Body>
+        <UpdateUser user={user} />
+      
+        <Row className='mt-5'>
         <h4>Your favorite movies</h4>
       </Row>
- 
-      <Row className='mt-3'>
-        <FavoriteMoviesView
-          movies={movies}
-          favoriteMovies={favoriteMovies}
-          currentUser={currentUser}
-          token={token}
-    
-        />
-      </Row>
-      <UpdateUser user={user} />
-      <Button className='d-block mt-5' variant='danger' onClick={handleDelete}>
-        Delete profile
+      
+          <CardGroup className="card-group-profile-mini-cards">
+            {favoriteMovies.map((m) => (
+              <Col
+                md={6}
+                lg={3}
+                key={m._id}
+                className="profile-movie-card-mini"
+              >
+                <Card className="h-100" bg="dark" text="light">
+                  <Link
+                    to={`/movies/${m._id}`}
+                    className="profile-movie-card-link"
+                  >
+                    <Card.Img
+                      variant="top"
+                      crossOrigin="anonymous | use-credentials"
+                      src={m.ImagePath}
+                    />
+                    <Card.Body>
+                      <Card.Title>{m.Title}</Card.Title>
+                    </Card.Body>
+                  </Link>
+                  <Button
+                    className="button-profile-view-remove-favorite"
+                    variant="outline-danger"
+                    size="sm"
+                    type="button"
+                    onClick={() => removeFavorite(m._id)}
+                  >
+                    Remove
+                  </Button>
+                </Card>
+              </Col>
+            ))}
+          </CardGroup>
+        </Card.Body>
+        <Card.Footer className="text-right">
+        <Button className='d-block mt-5' variant='danger' onClick={handleDelete}>
+        Delete account
       </Button>
+          <Button
+            className="button-profile-view-back"
+            variant="secondary"
+            onClick={() => {
+              onBackClick();
+            }}
+          >
+            Back
+          </Button>
+        </Card.Footer>
+      </Card>
     </Container>
   );
 }
+
+ProfileView.propTypes = {
+  favoriteMovies: PropTypes.array.isRequired,
+};

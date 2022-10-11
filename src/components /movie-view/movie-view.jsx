@@ -8,14 +8,14 @@ import {
   Card,
   Nav,
   Navbar,
-  NavDropdown,
+
 } from "react-bootstrap";
 import "./movie-view.scss";
 import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component {
   render() {
-    const { movie, onBackClick, isFavorite, handleFavorite } = this.props;
+    const { movie, onBackClick, isFavorite, handleFavorite , addFavorite} = this.props;
 
     return (
       <Container className='movie-view'>
@@ -25,6 +25,15 @@ export class MovieView extends React.Component {
           </Col>
           <Col>
             <div className='movie-title label value'>Title: {movie.Title}</div>
+            <Button
+            className="button-movie-view-add-favorite"
+            variant="outline-warning"
+            size="sm"
+            type="button"
+            onClick={() => addFavorite(movie._id)}
+          >
+            Add to favorites
+          </Button>
             <div className='description-keyword' label>
               Description:
             </div>
@@ -45,7 +54,7 @@ export class MovieView extends React.Component {
             >
               Back
             </Button>
-            {!isFavorite?(
+            {/* {!isFavorite?(
               <Button
                     className="my-4 ml-2"
                     variant="outline-primary"
@@ -57,7 +66,7 @@ export class MovieView extends React.Component {
             ):(
               <div/>
             )
-          }
+          } */}
           </Col>
         </Row>
       </Container>
