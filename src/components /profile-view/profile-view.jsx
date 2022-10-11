@@ -4,7 +4,12 @@ import axios from "axios";
 
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { UpdateUser } from "./update-user";
+// import { FavoriteMoviesView } from "./favorite-movies";
+// import { UpdateUser } from "./update-user";
 import { FavoriteMoviesView } from "./favorite-movies";
+// import  FavoriteMovies  from "./favorite-movies";
+// import UpdateUser from "./update-user";
+// import UserInfo from './user-info';
 
 // import { FavouriteMoviesView } from "./favourite-movie-view";
 

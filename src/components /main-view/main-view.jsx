@@ -14,6 +14,7 @@ import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { ProfileView } from "../profile-view/profile-view";
+
 import { NavBar } from "../navbar/navbar";
 import { Row, Col, Container } from "react-bootstrap";
 import "./main-view.scss";
@@ -58,11 +59,17 @@ export class MainView extends React.Component {
   }
 
   handleFavorite = (movieId, action) => {
-    const { username, favoriteMovies } = this.state;
-    const accessToken = localStorage.getItem("token");
+    const { favoriteMovies } = this.state;
+    // const { username,favoriteMovies } = this.state;
+    
+    
+    // const username= localStorage.getItem('user')
+    const username= localStorage.getItem('user')
+
+    const accessToken = localStorage.getItem('token');
     if (accessToken !== null && username !== null) {
       // Add MovieID to Favorites (local state & webserver)
-      if (action === "add") {
+      if (action === 'add') {
         this.setState({ favoriteMovies: [...favoriteMovies, movieId] });
         axios
           .post(
@@ -80,7 +87,7 @@ export class MainView extends React.Component {
           });
 
         // Remove MovieID from Favorites (local state & webserver)
-      } else if (action === "remove") {
+      } else if (action === 'remove') {
         this.setState({
           favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
         });
@@ -99,6 +106,8 @@ export class MainView extends React.Component {
           });
       }
     }
+
+
   };
 
   
@@ -178,6 +187,8 @@ export class MainView extends React.Component {
                         user={user}
                         onBackClick={() => history.goBack()}
                         movies={movies}
+                        
+                        
                         // favoriteMovies={favoriteMovies || []}
                         // handleFavorite={this.handleFavorite}
 
