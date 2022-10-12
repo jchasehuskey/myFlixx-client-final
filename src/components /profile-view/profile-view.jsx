@@ -66,7 +66,7 @@ export default function ProfileView(props) {
     if (isReq && token !== null && user !== null) {
       axios
         .put(
-          `https://mats-js-myflixdb.herokuapp.com/users/${user}`,
+          `https://myfavflixdb.herokuapp.com/users/${user}`,
 
           {
             Username: username,
@@ -82,7 +82,7 @@ export default function ProfileView(props) {
         )
         .then((res) => {
           const data = res.data;
-          console.log(data);
+          // console.log(data);
           alert('Update successful! Please log in with your new credentials');
           localStorage.clear();
           window.open('/', '_self');
@@ -115,7 +115,76 @@ export default function ProfileView(props) {
           Profile
         </Card.Header>
         <Card.Body>
-        <UpdateUser user={user} />
+        {/* <UpdateUser user={user} favoriteMovies={favoriteMovies}/> */}
+        <span className="label text-center headline-profile-update">
+                Update profile information
+              </span>
+              <Form>
+                <Form.Group
+                  className="profile-form-group-username"
+                  controlId="formGroupUsername"
+                >
+                  <Form.Label>Username:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Enter your username"
+                    required
+                  />
+                  {usernameErr && <p>{usernameErr}</p>}
+                </Form.Group>
+                <Form.Group
+                  className="profile-form-group-password"
+                  controlId="formGroupPassword"
+                >
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Your password must be 6 or more characters"
+                    minLength="6"
+                    required
+                  />
+                  {passwordErr && <p>{passwordErr}</p>}
+                </Form.Group>
+                <Form.Group
+                  className="profile-form-group-email"
+                  controlId="formGroupEmail"
+                >
+                  <Form.Label>Email:</Form.Label>
+                  <Form.Control
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email address"
+                    required
+                  />
+                  {emailErr && <p>{emailErr}</p>}
+                </Form.Group>
+                <Form.Group
+                  className="profile-form-group-birthday"
+                  controlId="formGroupBirthday"
+                >
+                  <Form.Label>Date of birth:</Form.Label>
+                  <Form.Control
+                    type="date"
+                    value={birthday}
+                    onChange={(e) => setBirthday(e.target.value)}
+                    placeholder="Enter your birthday"
+                  />
+                  {birthdayErr && <p>{birthdayErr}</p>}
+                </Form.Group>
+                <Button
+                  className="button-profile-view-update"
+                  variant="secondary"
+                  type="submit"
+                  onClick={handleUpdate}
+                >
+                  Update
+                </Button>
+              </Form>
       
         <Row className='mt-5'>
         <h4>Your favorite movies</h4>
