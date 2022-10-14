@@ -12,7 +12,7 @@ import {
   Row
 } from 'react-bootstrap';
 
-import { UpdateUser } from "./update-user";
+// import { UpdateUser } from "./update-user";
 import { Link } from 'react-router-dom';
 
 import './profile-view.scss';
@@ -82,6 +82,7 @@ export default function ProfileView(props) {
         )
         .then((res) => {
           const data = res.data;
+          console.log(data);
           // console.log(data);
           alert('Update successful! Please log in with your new credentials');
           localStorage.clear();
@@ -94,17 +95,23 @@ export default function ProfileView(props) {
     }
   };
 
-  const handleDelete = () => {
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    if (confirm('Are you sure? This cannot be undone!')) {
     axios
-      .delete(`https://myfavflixdb.herokuapp.com/users/${currentUser}`, {
+      // .delete(`https://myfavflixdb.herokuapp.com/users/${currentUser}`, {
+        .delete(`https://myfavflixdb.herokuapp.com/users/${user}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
-        alert(`The account ${user.Username} was successfully deleted.`);
+        alert(`The account ${user.Username} was successfully deleted.`);//may just need to make this statement a string
         localStorage.clear();
         window.open("/register", "_self");
       })
       .catch((error) => console.error(error));
+    }
   };
   console.log(favoriteMovies);
 

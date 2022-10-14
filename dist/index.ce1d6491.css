@@ -4,4 +4,336 @@
   height: 100%;
 }
 
+* {
+  font-family: Inter, sans-serif !important;
+}
+
+.nav-text, .navbar-light .navbar-nav .nav-link {
+  color: #f783ac !important;
+}
+
+.dropdown-menu {
+  min-width: 0 !important;
+  background-color: #212529 !important;
+}
+
+.dropdown-item {
+  background-color: #212529 !important;
+}
+
+.dropdown-menu:hover, .dropdown-item:hover {
+  transition: all .8s;
+  background-color: #000000ea !important;
+}
+
+Nav a:hover {
+  text-decoration: underline !important;
+}
+
+.main-view-nav {
+  background-color: #212529 !important;
+  padding: 1.5rem 3rem !important;
+}
+
+.main-view-nav:hover {
+  transition: all .8s;
+  background-color: #000000ea !important;
+}
+
+.main-view-container {
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.main-view {
+  display: flex;
+}
+
+* {
+  font-family: Inter, sans-serif !important;
+}
+
+.register-form {
+  margin-top: 6rem !important;
+}
+
+.register-flex {
+  margin-left: 9rem !important;
+  margin-right: 9rem !important;
+}
+
+.registration-button {
+  margin-top: 2rem;
+}
+
+.login-button a {
+  color: #fff !important;
+}
+
+#classicformpage {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 32rem;
+}
+
+#classicformpage .card {
+  background-color: #7e7bd733;
+}
+
+#classicformpage h6 {
+  line-height: 1.7;
+}
+
+#classicformpage .top-nav-collapse {
+  background: #424f95 !important;
+}
+
+#classicformpage label {
+  color: #fff !important;
+}
+
+* {
+  font-family: Inter, sans-serif;
+}
+
+.nav-text {
+  color: #f783ac !important;
+}
+
+Nav a:hover {
+  text-decoration: underline !important;
+}
+
+.main-view-nav {
+  background-color: #212529 !important;
+}
+
+.main-view-nav:hover {
+  transition: all .8s;
+  background-color: #000000ea !important;
+}
+
+.container-form {
+  width: 28rem !important;
+}
+
+.card-styling {
+  margin-top: 10rem;
+  margin-bottom: 3rem;
+}
+
+.login-button {
+  width: 5rem;
+  margin-right: 1rem;
+}
+
+.register-button a {
+  color: #fff !important;
+}
+
+.register-button {
+  width: 8rem;
+  color: #fff !important;
+}
+
+#classicformpage {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 32rem;
+  max-height: 90vh !important;
+}
+
+#classicformpage label {
+  color: #fff !important;
+}
+
+.main-view-nav {
+  background-color: #212529 !important;
+}
+
+.login-container {
+  max-width: 100% !important;
+}
+
+
+
+
+
+* {
+  font-family: Inter, sans-serif;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.navbar-logo {
+  color: #f783ac !important;
+}
+
+.nav-text {
+  color: #f783ac !important;
+  text-decoration: none !important;
+}
+
+.nav-text a:hover, a:hover {
+  text-decoration: none !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #f783ac !important;
+}
+
+.dropdown-menu {
+  min-width: 0 !important;
+  background-color: #212529 !important;
+}
+
+.dropdown-item {
+  background-color: #212529 !important;
+}
+
+.dropdown-menu:hover, .dropdown-item:hover {
+  transition: all .8s;
+  background-color: #000000ea !important;
+}
+
+Nav a:hover {
+  text-decoration: underline !important;
+}
+
+.main-view-nav {
+  background-color: #212529 !important;
+  padding: 1.5rem 3rem !important;
+}
+
+.main-view-nav:hover {
+  transition: all .8s;
+  background-color: #000000ea !important;
+}
+
+.main-view-container {
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.main-view {
+  display: flex;
+}
+
+.fav-movies {
+  background-color: #000;
+}
+
+* {
+  font-family: Inter, sans-serif !important;
+}
+
+.card-container {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  width: 20rem !important;
+}
+
+.movie-card {
+  border-radius: 50%;
+  margin: 4px;
+  padding: 2px;
+  transition: all .6s;
+  background-color: #212529 !important;
+}
+
+.movie-card:hover {
+  scale: 105%;
+  background-color: #000000ea !important;
+}
+
+.card-title-name {
+  color: #fff !important;
+  color: #a5d8ff !important;
+  font-family: Playfair Display SC, serif !important;
+  font-size: .8rem !important;
+  font-weight: 700 !important;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.description {
+  height: 2rem;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 24rem;
+}
+
+.card-button {
+  margin-top: .8rem;
+  color: beige !important;
+  background: #343a40 !important;
+  text-decoration: none !important;
+}
+
+.card-button:hover {
+  color: #f783ac !important;
+  background-color: #212529 !important;
+}
+
+.button.card-button.btn.btn-link {
+  margin-top: 0 !important;
+}
+
+* {
+  font-family: Inter, sans-serif !important;
+}
+
+.movie-view {
+  height: 100vh !important;
+  margin-top: 4rem !important;
+}
+
+.movie-img {
+  width: 20rem;
+  height: 24rem;
+}
+
+.movie-title {
+  color: #fff;
+  background-color: #212529;
+  border-radius: 9px;
+  padding: 4px 8px;
+  display: inline-block;
+  margin-top: 2rem !important;
+}
+
+.description-keyword {
+  color: #a5d8ff;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.movie-description {
+  color: #fff;
+  background-color: #212529;
+  border-radius: 9px;
+  margin-top: .6rem;
+  padding: 8px 12px;
+  display: inline-block;
+}
+
+.movie-view button {
+  margin-top: 2rem;
+}
+
 /*# sourceMappingURL=index.ce1d6491.css.map */

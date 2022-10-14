@@ -51,8 +51,8 @@ export function LoginView(props) {
           Username: username,
           Password: password,
         })
-        .then((response) => {
-          const data = response.data;
+        .then((res) => {
+          const data = res.data;
           props.onLoggedIn(data);
           console.log("succesfully logged in");
           window.open("/", "_self");
@@ -62,6 +62,8 @@ export function LoginView(props) {
         });
     }
   };
+
+  
 
   return (
     <div
