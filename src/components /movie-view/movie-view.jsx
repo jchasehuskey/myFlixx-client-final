@@ -31,6 +31,7 @@ export class MovieView extends React.Component {
             size="sm"
             type="button"
             onClick={() => addFavorite(movie._id)}
+            
           >
             Add to favorites
           </Button>

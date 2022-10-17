@@ -28,6 +28,29 @@ export default function ProfileView(props) {
   const [birthdayErr, setBirthdayErr] = useState('');
   const { user, favoriteMovies, removeFavorite, onBackClick } = props;
 
+
+
+  getUser = () => {
+    const username = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    axios
+      .get(`https://myfavflixdb.herokuapp.com/users/${username}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        this.setState({
+          username: response.data.username,
+          Password: response.data.password,
+          Email: response.data.email,
+          Birthday: response.data.Birthday,
+          favoriteMovies: response.data.favoriteMovies,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   // Validate user inputs
   const validate = () => {
     let isReq = true;
@@ -56,9 +79,44 @@ export default function ProfileView(props) {
     return isReq;
   };
 
+
+  // updateUser = (e) => {
+  //   e.preventDefault();
+  //   const username = localStorage.getItem("user");
+  //   const token = localStorage.getItem("token");
+  //   axios
+  //     .put(
+  //       `https://myfavflixdb.herokuapp.com/users/${username}`,
+  //       {
+  //         Username: this.state.Username,
+  //         Password: this.state.Password,
+  //         Email: this.state.Email,
+  //         Birthday: this.state.Birthday,
+  //       },
+  //       { headers: { Authorization: `Bearer ${token}` } }
+  //     )
+  //     .then((response) => {
+        // console.log("response", response);
+        // alert("Profile was successfully updated");
+        // this.setState({
+        //   Username: response.data.Username,
+        //   Password: response.data.password,
+        //   Email: response.data.email,
+        //   Birthday: response.data.Birthday,
+        // });
+        // localStorage.setItem("user", data.username);
+
+  //       window.location.pathname = "/";
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // };
+
   const handleUpdate = (e) => {
     e.preventDefault();
     const isReq = validate();
+    
     const token = localStorage.getItem('token');
     console.log(isReq);
     console.log(token);
@@ -115,7 +173,11 @@ export default function ProfileView(props) {
   };
   console.log(favoriteMovies);
 
+
+
   return (
+
+    
     <Container className="profile-container">
       <Card bg="dark" text="light" className="profile-card">
         <Card.Header className="text-center" as="h5">
@@ -188,6 +250,7 @@ export default function ProfileView(props) {
                   variant="secondary"
                   type="submit"
                   onClick={handleUpdate}
+                  // onClick={updateUser}
                 >
                   Update
                 </Button>

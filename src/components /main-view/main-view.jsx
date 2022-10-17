@@ -9,14 +9,19 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+// import { MovieView } from '../movie-view/movie-view2';
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import ProfileView  from "../profile-view/profile-view";
+// import { ProfileView } from '../profile-view/profile-view2';
 
 import { NavBar } from "../navbar/navbar";
 import { Row, Col, Container } from "react-bootstrap";
 import "./main-view.scss";
+
+
+
 export default class MainView extends React.Component {
   constructor() {
     super();
@@ -25,6 +30,7 @@ export default class MainView extends React.Component {
       movies: [],
       user: null,
       favoriteMovies: [],
+
     };
   }
 
@@ -123,6 +129,7 @@ export default class MainView extends React.Component {
 
   render() {
     const { movies, user, favoriteMovies } = this.state;
+    
     console.log(favoriteMovies);
     return (
       <Router>
@@ -299,3 +306,7 @@ export default class MainView extends React.Component {
 }
 
 MainView.propTypes = {};
+
+
+
+

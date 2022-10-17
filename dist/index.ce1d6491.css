@@ -225,10 +225,6 @@ Nav a:hover {
   display: flex;
 }
 
-.fav-movies {
-  background-color: #000;
-}
-
 * {
   font-family: Inter, sans-serif !important;
 }
@@ -334,6 +330,10 @@ Nav a:hover {
 
 .movie-view button {
   margin-top: 2rem;
+}
+
+.fav-movies {
+  background-color: #000;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
