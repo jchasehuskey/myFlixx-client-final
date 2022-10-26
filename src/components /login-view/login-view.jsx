@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import PropTypes from "prop-Types";
 import {
@@ -48,8 +49,8 @@ export function LoginView(props) {
     if (isReq) {
       axios
         .post("https://myfavflixdb.herokuapp.com/login", {
-          Username: username,
-          Password: password,
+          username: username,
+          password: password,
         })
         .then((res) => {
           const data = res.data;

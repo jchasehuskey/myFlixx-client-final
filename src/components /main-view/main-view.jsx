@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -34,6 +32,21 @@ export default class MainView extends React.Component {
     };
   }
 
+  getMovies(token) {
+    axios
+      .get('https://myfavflixdb.herokuapp.com/movies', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        this.setState({
+          movies: res.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   /* When a user successfully logs in, this function updates the
      `user` property in state to that *particular user */
   onLoggedIn(authData) {
@@ -49,20 +62,7 @@ export default class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  getMovies(token) {
-    axios
-      .get('https://myfavflixdb.herokuapp.com/movies', {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        this.setState({
-          movies: res.data,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+
 
   addFavorite(movieId) {
     const { user, favoriteMovies } = this.state;

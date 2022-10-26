@@ -1,5 +1,63 @@
+
+
+// import React from "react";
+// import { Navbar, Nav, Button, Container } from "react-bootstrap";
+
+// export function Menubar({ user }) {
+//   const onLoggedOut = () => {
+//     localStorage.clear();
+//     window.open("/", "_self");
+//   };
+
+//   const isAuth = () => {
+//     if (typeof window == "undefined") {
+//       return false;
+//     }
+//     if (localStorage.getItem("token")) {
+//       return localStorage.getItem("token");
+//     } else {
+//       return false;
+//     }
+//   };
+
+//   return (
+//     <Navbar
+//       className='main-nav'
+//       sticky='top'
+//       bg='dark'
+//       expand='lg'
+//       variant='dark'
+//     >
+//       <Container>
+//         <Navbar.Brand className='navbar-logo' href='/'>
+//           myFlix
+//         </Navbar.Brand>
+//         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+//         <Navbar.Collapse id='responsive-navbar-nav'>
+//           <Nav className='ml-auto'>
+//             {isAuth() && <Nav.Link href='/'>Movies</Nav.Link>}
+//             {isAuth() && <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>}
+//             {isAuth() && (
+//               <Button variant='link' onClick={onLoggedOut}>
+//                 Logout
+//               </Button>
+//             )}
+//             {!isAuth() && <Nav.Link href='/'>Sign-in</Nav.Link>}
+//             {!isAuth() && <Nav.Link href='/register'>Sign-up</Nav.Link>}
+//           </Nav>
+//         </Navbar.Collapse>
+//       </Container>
+//     </Navbar>
+//   );
+// }
+
+
+
+
+
+
 import React from "react";
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { Navbar, Container, Nav, Button, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "./navbar.scss";
@@ -69,43 +127,43 @@ export function NavBar() {
   );
 }
 
-// <Navbar className='main-view-nav' fluid>
-// <Container className='nav-container' fluid>
-//   <Navbar.Brand className='nav-text nav-logo' href='#home'>
-//     MyFlixx Movies
-//   </Navbar.Brand>
+<Navbar className='main-view-nav' fluid>
+<Container className='nav-container' fluid>
+  <Navbar.Brand className='nav-text nav-logo' href='#home'>
+    MyFlixx Movies
+  </Navbar.Brand>
 
-//   <Nav className='nav-main'>
-//     <Nav.Link
-//       className='nav-text'
-//       href='https://myfavflixdb.herokuapp.com/users/'
-//     >
-//       Movies
-//     </Nav.Link>
-//     <Nav.Link className='nav-text' href='#features'>
-//       Profile
-//     </Nav.Link>
-//     <Nav.Link className='nav-text' href='#pricing'>
-//       Login
-//     </Nav.Link>
-//     {/* this dropdown is not necessary */}
-//     <NavDropdown
-//       className='nav-text'
-//       id='nav-dropdown-dark-example'
-//       title='Account'
-//       menuVariant='dark'
-//     >
-//       <NavDropdown.Item
-//         className='nav-text'
-//         href='#action/3.1'
-//         //see how this works below
-//         onClick={() => {
-//           this.onLoggedOut();
-//         }}
-//       >
-//         Logout
-//       </NavDropdown.Item>
-//     </NavDropdown>
-//   </Nav>
-// </Container>
-// </Navbar>
+  <Nav className='nav-main'>
+    <Nav.Link
+      className='nav-text'
+      href='https://myfavflixdb.herokuapp.com/users/'
+    >
+      Movies
+    </Nav.Link>
+    <Nav.Link className='nav-text' href='#features'>
+      Profile
+    </Nav.Link>
+    <Nav.Link className='nav-text' href='#pricing'>
+      Login
+    </Nav.Link>
+    {/* this dropdown is not necessary */}
+    <NavDropdown
+      className='nav-text'
+      id='nav-dropdown-dark-example'
+      title='Account'
+      menuVariant='dark'
+    >
+      <NavDropdown.Item
+        className='nav-text'
+        href='#action/3.1'
+        //see how this works below
+        onClick={() => {
+          this.onLoggedOut();
+        }}
+      >
+        Logout
+      </NavDropdown.Item>
+    </NavDropdown>
+  </Nav>
+</Container>
+</Navbar>
