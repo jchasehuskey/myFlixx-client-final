@@ -18,8 +18,8 @@ import { Link } from 'react-router-dom';
 
 import './profile-view.scss';
 export default function ProfileView(props) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [Username, setUsername] = useState('');
+  const [Password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
   // Declare hook for each input
@@ -39,9 +39,12 @@ export default function ProfileView(props) {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
+        console.log('*******')
+        console.log(response.data.favoriteMovies);
+      
         this.setState({
-          username: response.data.username,
-          Password: response.data.password,
+          Username: response.data.Username,
+          Password: response.data.Password,
           Email: response.data.email,
           Birthday: response.data.Birthday,
           favoriteMovies: response.data.favoriteMovies,
@@ -49,23 +52,24 @@ export default function ProfileView(props) {
       })
       .catch(function (error) {
         console.log(error);
+        
       });
   };
 
   // Validate user inputs
   const validate = () => {
     let isReq = true;
-    if (!username) {
+    if (!Username) {
       setUsernameErr('Username required');
       isReq = false;
-    } else if (username.length < 5) {
+    } else if (Username.length < 5) {
       setUsernameErr('Username must be 5 or more characters');
       isReq = false;
     }
-    if (!password) {
+    if (!Password) {
       setPasswordErr('Password required');
       isReq = false;
-    } else if (password.length < 6) {
+    } else if (Password.length < 6) {
       setPasswordErr('Password must be 6 or more characters');
       isReq = false;
     }
@@ -118,6 +122,7 @@ export default function ProfileView(props) {
     e.preventDefault();
     const isReq = validate();
     
+    // const username = localStorage.getItem("user");
     const token = localStorage.getItem('token');
     console.log(isReq);
     console.log(token);
@@ -125,11 +130,12 @@ export default function ProfileView(props) {
     if (isReq && token !== null && user !== null) {
       axios
         .put(
+          // `https://myfavflixdb.herokuapp.com/users/${username}`,
           `https://myfavflixdb.herokuapp.com/users/${user}`,
 
           {
-            Username: username,
-            Password: password,
+            Username: Username,
+            Password: Password,
             Email: email,
             Birthday: birthday,
           },
@@ -139,8 +145,8 @@ export default function ProfileView(props) {
             },
           }
         )
-        .then((res) => {
-          const data = res.data;
+        .then((response) => {
+          const data = response.data;
           console.log(data);
           // console.log(data);
           alert('Update successful! Please log in with your new credentials');
@@ -197,7 +203,7 @@ export default function ProfileView(props) {
                   <Form.Label>Username:</Form.Label>
                   <Form.Control
                     type="text"
-                    value={username}
+                    value={Username}
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Enter your username"
                     required
@@ -211,7 +217,7 @@ export default function ProfileView(props) {
                   <Form.Label>Password:</Form.Label>
                   <Form.Control
                     type="password"
-                    value={password}
+                    value={Password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Your password must be 6 or more characters"
                     minLength="6"

@@ -15,27 +15,29 @@ import "./login-view.scss";
 import axios from "axios";
 
 export function LoginView(props) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [Username, setUsername] = useState("");
+  const [Password, setPassword] = useState("");
 
   // Declare hook for each input
-  const [usernameErr, setUsernameErr] = useState("");
-  const [passwordErr, setPasswordErr] = useState("");
+  const [UsernameErr, setUsernameErr] = useState("");
+  const [PasswordErr, setPasswordErr] = useState("");
+
+  
 
   // validate user inputs
   const validate = () => {
     let isReq = true;
-    if (!username) {
+    if (!Username) {
       setUsernameErr("Username Required");
       isReq = false;
-    } else if (username.length < 5) {
+    } else if (Username.length < 5) {
       setUsernameErr("Username must be atleast 5 characters long");
       isReq = false;
     }
-    if (!password) {
+    if (!Password) {
       setPasswordErr("Password Required");
       isReq = false;
-    } else if (password.length < 6) {
+    } else if (Password.length < 6) {
       setPassword("Password must be atleast 6 characters long");
       isReq = false;
     }
@@ -49,8 +51,8 @@ export function LoginView(props) {
     if (isReq) {
       axios
         .post("https://myfavflixdb.herokuapp.com/login", {
-          username: username,
-          password: password,
+          Username: Username,
+          Password: Password,
         })
         .then((res) => {
           const data = res.data;
@@ -87,19 +89,19 @@ export function LoginView(props) {
                       <Form.Label>Username:</Form.Label>
                       <Form.Control
                         type='text'
-                        value={username}
+                        value={Username}
                         onChange={(e) => setUsername(e.target.value)}
                       />
-                       {usernameErr && <p>{usernameErr}</p>}
+                       {UsernameErr && <p>{UsernameErr}</p>}
                     </Form.Group>
                     <Form.Group controlId='formPassword'>
                       <Form.Label>Password:</Form.Label>
                       <Form.Control
                         type='password'
-                        value={password}
+                        value={Password}
                         onChange={(e) => setPassword(e.target.value)}
                       />
-                        {passwordErr && <p>{passwordErr}</p>}
+                        {PasswordErr && <p>{PasswordErr}</p>}
                     </Form.Group>
                   </Form>
                 </Card.Body>
@@ -135,8 +137,8 @@ export function LoginView(props) {
 
 LoginView.propTypes = {
   user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
   }),
   onLoggedIn: PropTypes.func.isRequired,
 };
