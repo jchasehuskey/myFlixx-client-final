@@ -5,52 +5,6 @@
 }
 
 * {
-  font-family: Inter, sans-serif !important;
-}
-
-.nav-text, .navbar-light .navbar-nav .nav-link {
-  color: #f783ac !important;
-}
-
-.dropdown-menu {
-  min-width: 0 !important;
-  background-color: #212529 !important;
-}
-
-.dropdown-item {
-  background-color: #212529 !important;
-}
-
-.dropdown-menu:hover, .dropdown-item:hover {
-  transition: all .8s;
-  background-color: #000000ea !important;
-}
-
-Nav a:hover {
-  text-decoration: underline !important;
-}
-
-.main-view-nav {
-  background-color: #212529 !important;
-  padding: 1.5rem 3rem !important;
-}
-
-.main-view-nav:hover {
-  transition: all .8s;
-  background-color: #000000ea !important;
-}
-
-.main-view-container {
-  width: 100% !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-.main-view {
-  display: flex;
-}
-
-* {
   font-family: Inter, sans-serif;
 }
 
@@ -221,6 +175,10 @@ Nav a:hover {
   margin-top: 2rem;
 }
 
+
+
+
+
 * {
   font-family: Inter, sans-serif !important;
 }
@@ -265,10 +223,6 @@ Nav a:hover {
   color: #fff !important;
 }
 
-
-
-
-
 .fav-movies {
   background-color: #000;
 }
@@ -295,6 +249,52 @@ a:hover {
 }
 
 .navbar-light .navbar-nav .nav-link {
+  color: #f783ac !important;
+}
+
+.dropdown-menu {
+  min-width: 0 !important;
+  background-color: #212529 !important;
+}
+
+.dropdown-item {
+  background-color: #212529 !important;
+}
+
+.dropdown-menu:hover, .dropdown-item:hover {
+  transition: all .8s;
+  background-color: #000000ea !important;
+}
+
+Nav a:hover {
+  text-decoration: underline !important;
+}
+
+.main-view-nav {
+  background-color: #212529 !important;
+  padding: 1.5rem 3rem !important;
+}
+
+.main-view-nav:hover {
+  transition: all .8s;
+  background-color: #000000ea !important;
+}
+
+.main-view-container {
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.main-view {
+  display: flex;
+}
+
+* {
+  font-family: Inter, sans-serif !important;
+}
+
+.nav-text, .navbar-light .navbar-nav .nav-link {
   color: #f783ac !important;
 }
 
