@@ -59,6 +59,7 @@ export default class MainView extends React.Component {
 
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
+    localStorage.setItem('favoriteMovies', authData.user. favoriteMovies);
     this.getMovies(authData.token);
   }
 
@@ -128,9 +129,11 @@ export default class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user, favoriteMovies } = this.state;
+    const { movies, user, favoriteMovies, getUser } = this.state;
     
-    console.log(favoriteMovies);
+    //creates multiple areas in console
+    // console.log(favoriteMovies);  
+
     return (
       <Router>
         <NavBar user={user} />
@@ -192,13 +195,21 @@ export default class MainView extends React.Component {
               if (!user) return <Redirect to="/" />;
               return (
                 <Col>
-                  <ProfileView
+                  {/* <ProfileView
                     favoriteMovies={favoriteMovies.map((MovieId) => {
                       return movies.find((m) => m._id === MovieId);
-                    })}
+                    })} */}
+
+                    <ProfileView
+                    favoriteMovies={()=>{
+                      return movies.find()}}
+
+
+
                     user={user}
                     removeFavorite={this.removeFavorite.bind(this)}
                     onBackClick={() => history.goBack()}
+                    getUser={user}
                   />
                 </Col>
               );

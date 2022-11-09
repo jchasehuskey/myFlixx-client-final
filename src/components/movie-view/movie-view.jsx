@@ -12,10 +12,47 @@ import {
 } from "react-bootstrap";
 import "./movie-view.scss";
 import { Link } from "react-router-dom";
+import React, {useState} from "react";
 
 export class MovieView extends React.Component {
   render() {
-    const { movie, onBackClick, isFavorite, handleFavorite , addFavorite} = this.props;
+    const { movie, onBackClick, isFavorite, handleFavorite , addFavorite, favoriteMovies, show, toggleShow} = this.props;
+
+    // let buttonToggle=document.querySelector('toggle');
+    // buttonToggle.addEventListener('click', function (){
+    //   buttonToggle.classlist.add('.button-toggle')
+    // });
+
+
+    const Toggle = () => {
+      const [show, toggleShow] = React.useState(true);
+
+      <div>
+      <button
+        onClick={() => toggleShow(!show)}
+      >
+        toggle: {show ? 'show' : 'hide'}
+      </button>    
+      {show && <div>Hi there</div>}
+      </div>
+    
+      // return (
+      //   <div>
+      //     <button
+      //       onClick={() => toggleShow(!show)}
+      //     >
+      //       toggle: {show ? 'show' : 'hide'}
+      //     </button>    
+      //     {show && <div>Hi there</div>}
+      //   </div>
+      // )
+    }
+
+
+
+
+
+
 
     return (
       <Container className='movie-view'>
@@ -25,7 +62,7 @@ export class MovieView extends React.Component {
           </Col>
           <Col>
             <div className='movie-title label value'>Title: {movie.Title}</div>
-            <Button
+            {/* <Button
             className="button-movie-view-add-favorite"
             variant="outline-warning"
             size="sm"
@@ -34,7 +71,8 @@ export class MovieView extends React.Component {
             
           >
             Add to favorites
-          </Button>
+          </Button> */}
+      
             <div className='description-keyword' label>
               Description:
             </div>
@@ -55,11 +93,15 @@ export class MovieView extends React.Component {
             >
               Back
             </Button>
-            {/* {!isFavorite?(
+
+      
+            {!favoriteMovies?(
               <Button
                     className="my-4 ml-2"
-                    variant="outline-primary"
-                    onClick={() => handleFavorite(movie._id, 'add')}
+                    variant="outline-primary toggle"
+                    // onClick={() => handleFavorite(movie._id, 'add')}
+                    onClick={() => addFavorite(movie._id, 'add')}
+                    // onClick={() => addFavorite(movie._id)}
                   >
                     add to favorites
               </Button>
@@ -67,7 +109,19 @@ export class MovieView extends React.Component {
             ):(
               <div/>
             )
-          } */}
+          }
+
+          {/* originial code below to add favorites */}
+             {/* <Button
+            className="button-movie-view-add-favorite"
+            variant="outline-warning"
+            size="sm"
+            type="button"
+            onClick={() => addFavorite(movie._id)}
+            
+          >
+            Add to favorites
+          </Button> */}
           </Col>
         </Row>
       </Container>

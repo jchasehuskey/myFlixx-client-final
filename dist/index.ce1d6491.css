@@ -175,6 +175,10 @@ Nav a:hover {
   margin-top: 2rem;
 }
 
+.button-toggle {
+  display: none !important;
+}
+
 
 
 

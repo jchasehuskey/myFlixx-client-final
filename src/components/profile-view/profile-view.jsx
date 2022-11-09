@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import {
@@ -27,11 +27,15 @@ export default function ProfileView(props) {
   const [passwordErr, setPasswordErr] = useState('');
   const [emailErr, setEmailErr] = useState('');
   const [birthdayErr, setBirthdayErr] = useState('');
-  const { user, favoriteMovies, removeFavorite, onBackClick } = props;
+  const { user, removeFavorite, onBackClick } = props;
+  const [movies,setMovies]=useState([])
+  useEffect(() => {
+    getFavMovies();
+  }, [])
 
 
 
-  getUser = () => {
+  getFavMovies = () => {
     const username = localStorage.getItem("user");
     const token = localStorage.getItem("token");
     axios
@@ -39,22 +43,28 @@ export default function ProfileView(props) {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log('*******')
-        console.log(response.data.favoriteMovies);
-      
-        this.setState({
-          Username: response.data.Username,
-          Password: response.data.Password,
-          Email: response.data.email,
-          Birthday: response.data.Birthday,
-          favoriteMovies: response.data.favoriteMovies,
-        });
+        console.log('******* '+response.data.favoriteMovies);
+        const token = localStorage.getItem('token');    
+        axios
+          .get('https://myfavflixdb.herokuapp.com/movies', {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((res) => {
+            const fMovies = [];
+            response.data.favoriteMovies.map((MovieId) => {
+              fMovies.push(res.data.find((m) => m._id === MovieId));
+            });
+            setMovies(fMovies);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       })
       .catch(function (error) {
         console.log(error);
         
       });
-  };
+  };  
 
   // Validate user inputs
   const validate = () => {
@@ -83,40 +93,6 @@ export default function ProfileView(props) {
 
     return isReq;
   };
-
-
-  // updateUser = (e) => {
-  //   e.preventDefault();
-  //   const username = localStorage.getItem("user");
-  //   const token = localStorage.getItem("token");
-  //   axios
-  //     .put(
-  //       `https://myfavflixdb.herokuapp.com/users/${username}`,
-  //       {
-  //         Username: this.state.Username,
-  //         Password: this.state.Password,
-  //         Email: this.state.Email,
-  //         Birthday: this.state.Birthday,
-  //       },
-  //       { headers: { Authorization: `Bearer ${token}` } }
-  //     )
-  //     .then((response) => {
-        // console.log("response", response);
-        // alert("Profile was successfully updated");
-        // this.setState({
-        //   Username: response.data.Username,
-        //   Password: response.data.password,
-        //   Email: response.data.email,
-        //   Birthday: response.data.Birthday,
-        // });
-        // localStorage.setItem("user", data.username);
-
-  //       window.location.pathname = "/";
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -178,9 +154,6 @@ export default function ProfileView(props) {
       .catch((error) => console.error(error));
     }
   };
-  console.log(favoriteMovies);
-
-
 
   return (
 
@@ -268,7 +241,7 @@ export default function ProfileView(props) {
       </Row>
       
           <CardGroup className="card-group-profile-mini-cards">
-            {favoriteMovies.map((m) => (
+            {movies.map((m) => (
               <Col
                 md={6}
                 lg={3}
@@ -321,8 +294,3 @@ export default function ProfileView(props) {
     </Container>
   );
 }
-
-ProfileView.propTypes = {
-  favoriteMovies: PropTypes.array.isRequired,
-};
-
