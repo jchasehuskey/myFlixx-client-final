@@ -267,7 +267,9 @@ export default function ProfileView(props) {
                     variant="outline-danger"
                     size="sm"
                     type="button"
+                    // onClick={() => removeFavorite(m._id)}
                     onClick={() => removeFavorite(m._id)}
+                    
                   >
                     Remove
                   </Button>

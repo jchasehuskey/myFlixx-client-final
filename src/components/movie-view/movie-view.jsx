@@ -95,7 +95,7 @@ export class MovieView extends React.Component {
             </Button>
 
       
-            {!favoriteMovies?(
+            {!isFavorite?(
               <Button
                     className="my-4 ml-2"
                     variant="outline-primary toggle"

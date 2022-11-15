@@ -65,13 +65,14 @@ export default class MainView extends React.Component {
 
 
 
-  addFavorite(MovieId) {
+  addFavorite(MovieId, action) {
     const { user, favoriteMovies } = this.state;
     const token = localStorage.getItem('token');
     if (favoriteMovies.some((favId) => favId === MovieId)) {
       console.log('Movie already added to favorites!');
     } else {
       if (token !== null && user !== null) {
+        if (action === "add") {
         this.setState({
           favoriteMovies: [...favoriteMovies, MovieId],
         });
@@ -85,17 +86,19 @@ export default class MainView extends React.Component {
               },
             }
           )
-          .then((res) => {
+          .then(() => {
             console.log(`Movie successfully added to favorites!`);
           })
           .catch((e) => {
             console.error(e);
           });
+          
+        }
       }
     }
   }
 
-  removeFavorite(MovieId) {
+  removeFavorite(MovieId, action) {
     const { user, favoriteMovies } = this.state;
     const token = localStorage.getItem('token');
     if (token !== null && user !== null) {
@@ -111,12 +114,18 @@ export default class MainView extends React.Component {
         )
         .then(() => {
           console.log(`Movie successfully removed from favorites!`);
+       
+          
+          // localStorage.clear();
+          // window.open("/users");
         })
         .catch((e) => {
           console.error(e);
         });
     }
   }
+
+
 
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
@@ -129,7 +138,7 @@ export default class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user, favoriteMovies, getUser } = this.state;
+    const { movies, user, favoriteMovies} = this.state;
     
     //creates multiple areas in console
     // console.log(favoriteMovies);  
@@ -236,8 +245,12 @@ export default class MainView extends React.Component {
                 <Col md={8} className="movie-view">
                   <MovieView
                     movie={movies.find((m) => m._id === match.params.MovieId)}
+                    isFavorite={favoriteMovies.includes(match.params.MovieId)}
                     addFavorite={this.addFavorite.bind(this)}
                     onBackClick={() => history.goBack()}
+
+                    // this may not be necessary
+                  
                   />
                 </Col>
               );
