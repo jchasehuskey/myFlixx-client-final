@@ -1,4 +1,5 @@
 import React from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
@@ -28,6 +29,7 @@ export default class MainView extends React.Component {
       movies: [],
       user: null,
       favoriteMovies: [],
+
 
     };
   }
@@ -99,9 +101,11 @@ export default class MainView extends React.Component {
   }
 
   removeFavorite(MovieId, action) {
-    const { user, favoriteMovies } = this.state;
+    const { user, favoriteMovies} = this.state;
+   
     const token = localStorage.getItem('token');
     if (token !== null && user !== null) {
+console.log("+++++++++ curr state: ", this.state);
       this.setState({
         favoriteMovies: favoriteMovies.filter((movie) => movie !== MovieId),
       });
@@ -112,18 +116,48 @@ export default class MainView extends React.Component {
             headers: { Authorization: `Bearer ${token}` },
           }
         )
-        .then(() => {
+        .then((response) => {
           console.log(`Movie successfully removed from favorites!`);
-       
-          
-          // localStorage.clear();
-          // window.open("/users");
+          console.log('******* '+response.data.favoriteMovies);
+
+console.log("++++++++++++ state AFTER delete: ", this.state);
+          // const token = localStorage.getItem('token');    
+          // axios
+          //   .get('https://myfavflixdb.herokuapp.com/movies', {
+          //     headers: { Authorization: `Bearer ${token}` },
+          //   })
+          //   .then((res) => {
+          //     const fMovies = [];
+          //     response.data.favoriteMovies.map((MovieId) => {
+          //       fMovies.push(res.data.find((m) => m._id === MovieId));
+          //     });
+          //     this.setState({
+          //       favoriteMovies:{
+          //         ...this.state.favoriteMovies,
+          //         favoriteMovies:
+               
+                
+          //       }
+          //     })
+          //   })
+
+
+
+      
+          // this.setState({
+          //   favoriteMovies:{
+          //     ...this.state.favoriteMovies, favoriteMovies:[],
+          //   }
+          // })
+      
+      
         })
         .catch((e) => {
           console.error(e);
         });
     }
   }
+
 
 
 
@@ -138,6 +172,7 @@ export default class MainView extends React.Component {
   }
 
   render() {
+    let{userMovies}=this.props;
     const { movies, user, favoriteMovies} = this.state;
     
     //creates multiple areas in console

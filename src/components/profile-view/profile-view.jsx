@@ -17,6 +17,7 @@ import {
 import { Link } from 'react-router-dom';
 
 import './profile-view.scss';
+
 export default function ProfileView(props) {
   const [Username, setUsername] = useState('');
   const [Password, setPassword] = useState('');
@@ -28,6 +29,7 @@ export default function ProfileView(props) {
   const [emailErr, setEmailErr] = useState('');
   const [birthdayErr, setBirthdayErr] = useState('');
   const { user, removeFavorite, onBackClick } = props;
+
   const [movies,setMovies]=useState([])
   useEffect(() => {
     getFavMovies();
@@ -55,6 +57,7 @@ export default function ProfileView(props) {
               fMovies.push(res.data.find((m) => m._id === MovieId));
             });
             setMovies(fMovies);
+console.log("+++++++++++++ in page movies set: ", this.state);
           })
           .catch(function (error) {
             console.log(error);
@@ -93,6 +96,8 @@ export default function ProfileView(props) {
 
     return isReq;
   };
+
+
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -154,6 +159,8 @@ export default function ProfileView(props) {
       .catch((error) => console.error(error));
     }
   };
+
+  
 
   return (
 
@@ -269,6 +276,7 @@ export default function ProfileView(props) {
                     type="button"
                     // onClick={() => removeFavorite(m._id)}
                     onClick={() => removeFavorite(m._id)}
+              
                     
                   >
                     Remove
