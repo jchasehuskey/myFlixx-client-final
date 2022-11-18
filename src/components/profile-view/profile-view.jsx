@@ -160,9 +160,14 @@ console.log("+++++++++++++ in page movies set: ", this.state);
     }
   };
 
-  
+  // const fMovies = [];
+  // response.data.favoriteMovies.map((MovieId) => {
+  //   fMovies.push(res.data.find((m) => m._id === MovieId));
+  // });
+  // setMovies(fMovies);
 
   return (
+  
 
     
     <Container className="profile-container">
@@ -214,7 +219,7 @@ console.log("+++++++++++++ in page movies set: ", this.state);
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email address"
+                    plsaceholder="Enter your email address"
                     required
                   />
                   {emailErr && <p>{emailErr}</p>}
@@ -275,8 +280,42 @@ console.log("+++++++++++++ in page movies set: ", this.state);
                     size="sm"
                     type="button"
                     // onClick={() => removeFavorite(m._id)}
-                    onClick={() => removeFavorite(m._id)}
-              
+           
+                    // onClick={() => removeFavorite(m._id, )}
+                   onClick={()=>{
+                    removeFavorite(m._id);
+                    
+                      const username = localStorage.getItem("user");
+                      const token = localStorage.getItem("token");
+                      axios
+                        .get(`https://myfavflixdb.herokuapp.com/users/${username}`, {
+                          headers: { Authorization: `Bearer ${token}` },
+                        })
+                        .then((response) => {
+                          console.log('******* '+response.data.favoriteMovies);
+                          const token = localStorage.getItem('token');    
+                          axios
+                            .get('https://myfavflixdb.herokuapp.com/movies', {
+                              headers: { Authorization: `Bearer ${token}` },
+                            })
+                            .then((res) => {
+                              const fMovies = [];
+                              response.data.favoriteMovies.map((MovieId) => {
+                                fMovies.push(res.data.find((m) => m._id === MovieId));
+                              });
+                              setMovies(fMovies);
+                  console.log("+++++++++++++ in page movies set: ", this.state);
+                            })
+                            .catch(function (error) {
+                              console.log(error);
+                            });
+                        })
+                        .catch(function (error) {
+                          console.log(error);
+                          
+                        });
+
+                   }}
                     
                   >
                     Remove

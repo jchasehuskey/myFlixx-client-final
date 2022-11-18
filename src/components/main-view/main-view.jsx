@@ -49,6 +49,8 @@ export default class MainView extends React.Component {
       });
   }
 
+
+
   /* When a user successfully logs in, this function updates the
      `user` property in state to that *particular user */
   onLoggedIn(authData) {
@@ -68,6 +70,7 @@ export default class MainView extends React.Component {
 
 
   addFavorite(MovieId, action) {
+ 
     const { user, favoriteMovies } = this.state;
     const token = localStorage.getItem('token');
     if (favoriteMovies.some((favId) => favId === MovieId)) {
@@ -101,8 +104,9 @@ export default class MainView extends React.Component {
   }
 
   removeFavorite(MovieId, action) {
+
     const { user, favoriteMovies} = this.state;
-   
+    const username = localStorage.getItem("user");
     const token = localStorage.getItem('token');
     if (token !== null && user !== null) {
 console.log("+++++++++ curr state: ", this.state);
@@ -119,36 +123,36 @@ console.log("+++++++++ curr state: ", this.state);
         .then((response) => {
           console.log(`Movie successfully removed from favorites!`);
           console.log('******* '+response.data.favoriteMovies);
+          axios
+      .get(`https://myfavflixdb.herokuapp.com/users/${username}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log('******* '+response.data.favoriteMovies);
+        const token = localStorage.getItem('token');    
+        axios
+          .get('https://myfavflixdb.herokuapp.com/movies', {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((res) => {
+            const fMovies = [];
+            response.data.favoriteMovies.map((MovieId) => {
+              fMovies.push(res.data.find((m) => m._id === MovieId));
+            });
+            setMovies(fMovies);
+console.log("+++++++++++++ in page movies set: ", this.state);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      })
+      .catch(function (error) {
+        console.log(error);
+        
+      });
 
 console.log("++++++++++++ state AFTER delete: ", this.state);
-          // const token = localStorage.getItem('token');    
-          // axios
-          //   .get('https://myfavflixdb.herokuapp.com/movies', {
-          //     headers: { Authorization: `Bearer ${token}` },
-          //   })
-          //   .then((res) => {
-          //     const fMovies = [];
-          //     response.data.favoriteMovies.map((MovieId) => {
-          //       fMovies.push(res.data.find((m) => m._id === MovieId));
-          //     });
-          //     this.setState({
-          //       favoriteMovies:{
-          //         ...this.state.favoriteMovies,
-          //         favoriteMovies:
-               
-                
-          //       }
-          //     })
-          //   })
-
-
-
-      
-          // this.setState({
-          //   favoriteMovies:{
-          //     ...this.state.favoriteMovies, favoriteMovies:[],
-          //   }
-          // })
+         
       
       
         })
