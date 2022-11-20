@@ -28,8 +28,8 @@ export default function ProfileView(props) {
   const [passwordErr, setPasswordErr] = useState('');
   const [emailErr, setEmailErr] = useState('');
   const [birthdayErr, setBirthdayErr] = useState('');
-  const { user, removeFavorite, onBackClick } = props;
-
+  const { user, onBackClick} = props;
+  const [allmovies,setFavoriteMovies]=useState([])
   const [movies,setMovies]=useState([])
   useEffect(() => {
     getFavMovies();
@@ -57,7 +57,7 @@ export default function ProfileView(props) {
               fMovies.push(res.data.find((m) => m._id === MovieId));
             });
             setMovies(fMovies);
-console.log("+++++++++++++ in page movies set: ", this.state);
+// console.log("+++++++++++++ in page movies set: ", this.state);
           })
           .catch(function (error) {
             console.log(error);
@@ -98,6 +98,33 @@ console.log("+++++++++++++ in page movies set: ", this.state);
   };
 
 
+
+removeFavorite = (MovieId) => {
+  const favoriteMovies=[];
+  const token = localStorage.getItem('token');
+  if (token !== null && user !== null) {
+    setFavoriteMovies({
+      favoriteMovies: favoriteMovies.filter((movie) => movie !== MovieId),
+    });
+    axios
+      .delete(
+        `https://myfavflixdb.herokuapp.com/users/${user}/movies/${MovieId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        getFavMovies();
+        console.log(`Movie successfully removed from favorites!`);
+        // console.log('******* '+response.data.favoriteMovies);
+    })
+      .catch((e) => {
+        console.error(e);
+      });
+  }
+}
+
+  
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -285,36 +312,6 @@ console.log("+++++++++++++ in page movies set: ", this.state);
                    onClick={()=>{
                     removeFavorite(m._id);
                     
-                      const username = localStorage.getItem("user");
-                      const token = localStorage.getItem("token");
-                      axios
-                        .get(`https://myfavflixdb.herokuapp.com/users/${username}`, {
-                          headers: { Authorization: `Bearer ${token}` },
-                        })
-                        .then((response) => {
-                          console.log('******* '+response.data.favoriteMovies);
-                          const token = localStorage.getItem('token');    
-                          axios
-                            .get('https://myfavflixdb.herokuapp.com/movies', {
-                              headers: { Authorization: `Bearer ${token}` },
-                            })
-                            .then((res) => {
-                              const fMovies = [];
-                              response.data.favoriteMovies.map((MovieId) => {
-                                fMovies.push(res.data.find((m) => m._id === MovieId));
-                              });
-                              setMovies(fMovies);
-                  console.log("+++++++++++++ in page movies set: ", this.state);
-                            })
-                            .catch(function (error) {
-                              console.log(error);
-                            });
-                        })
-                        .catch(function (error) {
-                          console.log(error);
-                          
-                        });
-
                    }}
                     
                   >
@@ -343,3 +340,17 @@ console.log("+++++++++++++ in page movies set: ", this.state);
     </Container>
   );
 }
+
+
+
+
+
+
+
+
+//general NOTES
+
+//useState can only be used in function componenets, not class componenets.  
+//hooks cannot be used inside of if statemtents or functions or loops - basically cannot be nested, must be called in the top level
+//useState always returns an array with two values 
+//if you pass variables as a function in use state, it will only get ran at inital render once.  Good for using complex values in the useState that require a lot of variables and
