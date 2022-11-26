@@ -1,12 +1,21 @@
 import React from 'react';
-import React, { useState,useEffect } from 'react';
+// import React, { useState,useEffect } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
+//#1
+import { setMovies } from '../../actions/actions';
+
+//#2
+import MoviesList from '../movies-list/movies-list';
+
 import { LoginView } from "../login-view/login-view";
-import { MovieCard } from "../movie-card/movie-card";
+
+//will be removing movine card soon
+// import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 // import { MovieView } from '../movie-view/movie-view2';
 import { DirectorView } from "../director-view/director-view";
@@ -20,34 +29,57 @@ import { Row, Col, Container } from "react-bootstrap";
 import "./main-view.scss";
 
 
-
-export default class MainView extends React.Component {
+//for redux, remove "export" from class extends
+class MainView extends React.Component {
   constructor() {
     super();
-    // Initial state is set to null
-    this.state = {
-      movies: [],
-      user: null,
-      favoriteMovies: [],
+    // Initial state is set to null.  but have to remove entirely for redux
+    // this.state = {
+    //   movies: [],
+    //   user: null,
+    //   favoriteMovies: [],
 
 
-    };
+    // };
+
+
+   
   }
+
+  // componentDidMount(){
+  //   this.getMovies();
+  // }
+
 
   getMovies(token) {
     axios
       .get('https://myfavflixdb.herokuapp.com/movies', {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => {
-        this.setState({
-          movies: res.data,
-        });
+      .then((response) => {
+            // this.setState({
+        //   movies: res.data,
+        // });
+
+//MAY NEED THE BELOW
+        // let response ={
+        //   data:{
+        //     title:'',
+        //     description:''
+        //   }
+        // }
+
+
+              // #4
+      this.props.setMovies(response.data);
+    
       })
       .catch(function (error) {
         console.log(error);
       });
   }
+
+
 
 
 
@@ -73,7 +105,7 @@ export default class MainView extends React.Component {
  
     const { user, favoriteMovies } = this.state;
     const token = localStorage.getItem('token');
-    if (favoriteMovies.some((favId) => favId === MovieId)) {
+    if (favoriteMovies.includes((favId) => favId === MovieId)) {
       console.log('Movie already added to favorites!');
     } else {
       if (token !== null && user !== null) {
@@ -103,31 +135,39 @@ export default class MainView extends React.Component {
     }
   }
 
-  removeFavorite(MovieId, action) {
-    const { user, favoriteMovies} = this.state;
-    // const username = localStorage.getItem("user");
-    const token = localStorage.getItem('token');
-    if (token !== null && user !== null) {
-console.log("+++++++++ curr state: ", this.state);
-      this.setState({
-        favoriteMovies: favoriteMovies.filter((movie) => movie !== MovieId),
-      });
-      axios
-        .delete(
-          `https://myfavflixdb.herokuapp.com/users/${user}/movies/${MovieId}`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        )
-        .then((response) => {
-          console.log(`Movie successfully removed from favorites!`);
-          console.log('******* '+response.data.favoriteMovies);
-      })
-        .catch((e) => {
-          console.error(e);
-        });
-    }
-  }
+
+
+
+
+
+
+
+
+//   removeFavorite(MovieId, action) {
+//     const { user, favoriteMovies} = this.state;
+//     // const username = localStorage.getItem("user");
+//     const token = localStorage.getItem('token');
+//     if (token !== null && user !== null) {
+// console.log("+++++++++ curr state: ", this.state);
+//       this.setState({
+//         favoriteMovies: favoriteMovies.filter((movie) => movie !== MovieId),
+//       });
+//       axios
+//         .delete(
+//           `https://myfavflixdb.herokuapp.com/users/${user}/movies/${MovieId}`,
+//           {
+//             headers: { Authorization: `Bearer ${token}` },
+//           }
+//         )
+//         .then((response) => {
+//           console.log(`Movie successfully removed from favorites!`);
+//           console.log('******* '+response.data.favoriteMovies);
+//       })
+//         .catch((e) => {
+//           console.error(e);
+//         });
+//     }
+//   }
 
 
 
@@ -143,8 +183,12 @@ console.log("+++++++++ curr state: ", this.state);
   }
 
   render() {
-    let{userMovies}=this.props;
-    const { movies, user, favoriteMovies} = this.state;
+    // let{userMovies}=this.props;  this was originally integrated
+    // const { user,movies, favoriteMovies} = this.state;
+    const { user, favoriteMovies} = this.state;
+    //movies was originally this.state
+    let {movies} =this.props;
+
     
     //creates multiple areas in console
     // console.log(favoriteMovies);  
@@ -172,11 +216,12 @@ console.log("+++++++++ curr state: ", this.state);
               // Before the movies have been loaded
               if (movies.length === 0) return <div className="main-view" />;
 
-              return movies.map((m) => (
-                <Col md={6} lg={3} key={m._id} >
-                  <MovieCard movie={m} />
-                </Col>
-              ));
+              return <MoviesList movies={movies}/>;
+              // return movies.map((m) => (
+              //   <Col md={6} lg={3} key={m._id} >
+              //     <MovieCard movie={m} />
+              //   </Col>
+              // ));
             }}
           />
           <Route
@@ -252,7 +297,7 @@ console.log("+++++++++ curr state: ", this.state);
                     addFavorite={this.addFavorite.bind(this)}
                     onBackClick={() => history.goBack()}
 
-                    // this may not be necessary
+                
                   
                   />
                 </Col>
@@ -332,7 +377,15 @@ console.log("+++++++++ curr state: ", this.state);
   }
 }
 
-MainView.propTypes = {};
+
+//THIS MAKES MOVIES THE PROP OF THE MAINVIEW COMPONENT
+// #7
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+// #8
+export default connect(mapStateToProps, { setMovies } )(MainView);
 
 
 

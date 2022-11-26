@@ -31,11 +31,12 @@ export default function ProfileView(props) {
   const { user, onBackClick} = props;
   const [allmovies,setFavoriteMovies]=useState([])
   const [movies,setMovies]=useState([])
+  //useEffect essentially tells the browser everything inside of the arrow function -> is going to be executed every time the application renders
   useEffect(() => {
     getFavMovies();
   }, [])
 
-
+  //whenever anything inside the array changes, it runs whatsever in the useEffect arrow function 
 
   getFavMovies = () => {
     const username = localStorage.getItem("user");

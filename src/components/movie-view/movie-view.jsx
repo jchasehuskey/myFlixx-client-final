@@ -11,48 +11,18 @@ import {
 
 } from "react-bootstrap";
 import "./movie-view.scss";
+
 import { Link } from "react-router-dom";
-import React, {useState} from "react";
+
 
 export class MovieView extends React.Component {
+
+
   render() {
-    const { movie, onBackClick, isFavorite, handleFavorite , addFavorite, favoriteMovies, show, toggleShow} = this.props;
-
-    // let buttonToggle=document.querySelector('toggle');
-    // buttonToggle.addEventListener('click', function (){
-    //   buttonToggle.classlist.add('.button-toggle')
-    // });
-
-
-    const Toggle = () => {
-      const [show, toggleShow] = React.useState(true);
-
-      <div>
-      <button
-        onClick={() => toggleShow(!show)}
-      >
-        toggle: {show ? 'show' : 'hide'}
-      </button>    
-      {show && <div>Hi there</div>}
-      </div>
     
-      // return (
-      //   <div>
-      //     <button
-      //       onClick={() => toggleShow(!show)}
-      //     >
-      //       toggle: {show ? 'show' : 'hide'}
-      //     </button>    
-      //     {show && <div>Hi there</div>}
-      //   </div>
-      // )
-    }
+    const { movie, onBackClick, isFavorite, handleFavorite , addFavorite, favoriteMovies, show,  } = this.props;
 
-
-
-
-
-
+    
 
     return (
       <Container className='movie-view'>
@@ -108,6 +78,7 @@ export class MovieView extends React.Component {
 
             ):(
               <div/>
+      
             )
           }
 
