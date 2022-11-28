@@ -43,7 +43,7 @@ class MainView extends React.Component {
     // };
     this.state = {
 
-      user: null,
+      // user: null,
       favoriteMovies: [],
 
 
@@ -62,9 +62,29 @@ class MainView extends React.Component {
         user: localStorage.getItem('user'),
       });
       this.getMovies(accessToken);
+      this.getUser(accessToken);
     }
   }
 
+
+
+  getMovies(token) {
+    axios
+      .get('https://myfavflixdb.herokuapp.com/movies', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+            // this.setState({
+        //   movies: res.data,
+        // });
+      this.props.setMovies(response.data);
+      console.log('movies set')
+    
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   // Fetch user data
   getUser(token) {
@@ -84,22 +104,6 @@ class MainView extends React.Component {
 
 
 
-  getMovies(token) {
-    axios
-      .get('https://myfavflixdb.herokuapp.com/movies', {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-            // this.setState({
-        //   movies: res.data,
-        // });
-      this.props.setMovies(response.data);
-    
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
 
 
 
@@ -107,7 +111,6 @@ class MainView extends React.Component {
   /* When a user successfully logs in, this function updates the
      `user` property in state to that *particular user */
   onLoggedIn(authData) {
-    this.props.setUser(authData.user);
     console.log(authData);
     const { Username, FavoriteMovies } = authData.user;
     this.setState({
@@ -119,6 +122,7 @@ class MainView extends React.Component {
     localStorage.setItem('user', authData.user.Username);
     localStorage.setItem('favoriteMovies', authData.user. favoriteMovies);
     this.getMovies(authData.token);
+    this.props.setUser(authData.user);
   }
 
 
@@ -169,8 +173,8 @@ class MainView extends React.Component {
 
   render() {
    // const { user, movies, favoriteMovies} = this.state;
-    const { user, favoriteMovies} = this.state;
-    let {movies} =this.props;
+    const {  favoriteMovies} = this.state;
+    let {movies,user} =this.props;
 
 
     return (
@@ -178,6 +182,7 @@ class MainView extends React.Component {
         <NavBar user={user} />
         <Container fluid className='bg-dark main-view-container'>
             <Row className='main-view  justify-content-md-center'>
+
           <Route
             exact
             path="/"
@@ -350,6 +355,7 @@ class MainView extends React.Component {
               );
             }}
           />
+
         </Row>
         </Container>
       </Router>

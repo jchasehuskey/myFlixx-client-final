@@ -28276,7 +28276,7 @@ class MainView extends (0, _reactDefault.default).Component {
         //   favoriteMovies: [],
         // };
         this.state = {
-            user: null,
+            // user: null,
             favoriteMovies: []
         };
     }
@@ -28287,7 +28287,23 @@ class MainView extends (0, _reactDefault.default).Component {
                 user: localStorage.getItem("user")
             });
             this.getMovies(accessToken);
+            this.getUser(accessToken);
         }
+    }
+    getMovies(token) {
+        (0, _axiosDefault.default).get("https://myfavflixdb.herokuapp.com/movies", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            // this.setState({
+            //   movies: res.data,
+            // });
+            this.props.setMovies(response.data);
+            console.log("movies set");
+        }).catch(function(error) {
+            console.log(error);
+        });
     }
     // Fetch user data
     getUser(token) {
@@ -28303,23 +28319,8 @@ class MainView extends (0, _reactDefault.default).Component {
             console.log(error.response);
         });
     }
-    getMovies(token) {
-        (0, _axiosDefault.default).get("https://myfavflixdb.herokuapp.com/movies", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>{
-            // this.setState({
-            //   movies: res.data,
-            // });
-            this.props.setMovies(response.data);
-        }).catch(function(error) {
-            console.log(error);
-        });
-    }
     /* When a user successfully logs in, this function updates the
      `user` property in state to that *particular user */ onLoggedIn(authData) {
-        this.props.setUser(authData.user);
         console.log(authData);
         const { Username , FavoriteMovies  } = authData.user;
         this.setState({
@@ -28330,6 +28331,7 @@ class MainView extends (0, _reactDefault.default).Component {
         localStorage.setItem("user", authData.user.Username);
         localStorage.setItem("favoriteMovies", authData.user.favoriteMovies);
         this.getMovies(authData.token);
+        this.props.setUser(authData.user);
     }
     addFavorite(MovieId, action) {
         const { favoriteMovies , user  } = this.state;
@@ -28361,15 +28363,15 @@ class MainView extends (0, _reactDefault.default).Component {
     }
     render() {
         // const { user, movies, favoriteMovies} = this.state;
-        const { user , favoriteMovies  } = this.state;
-        let { movies  } = this.props;
+        const { favoriteMovies  } = this.state;
+        let { movies , user  } = this.props;
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbar.NavBar), {
                     user: user
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 178,
+                    lineNumber: 182,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
@@ -28404,7 +28406,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 181,
+                                lineNumber: 186,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -28419,7 +28421,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 207,
+                                lineNumber: 212,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -28452,7 +28454,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 218,
+                                lineNumber: 223,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -28482,7 +28484,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 255,
+                                lineNumber: 260,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -28510,7 +28512,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 287,
+                                lineNumber: 292,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -28538,24 +28540,24 @@ class MainView extends (0, _reactDefault.default).Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 320,
+                                lineNumber: 325,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 180,
+                        lineNumber: 184,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 179,
+                    lineNumber: 183,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 177,
+            lineNumber: 181,
             columnNumber: 7
         }, this);
     }
@@ -49733,7 +49735,8 @@ function MoviesList(props) {
                 columnNumber: 5
             }, this),
             filteredMovies.map((m)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
-                    md: 3,
+                    lg: 3,
+                    md: 5,
                     sm: 6,
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                         movie: m

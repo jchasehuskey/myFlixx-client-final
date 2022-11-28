@@ -272,12 +272,6 @@ Nav a:hover {
   padding-right: 0 !important;
 }
 
-.main-view {
-  display: flex;
-  margin-left: 2.4rem !important;
-  margin-right: 2.4rem !important;
-}
-
 .search-filter {
   float: right !important;
   width: 25% !important;
