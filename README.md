@@ -22,7 +22,8 @@ React Bootstrap
 MongoDB
 
 What I learned:
-React Design Principles for a SPA
-Managing State and Props in React
-Redux / Flux Pattern
-HTTP Requests via Axios
+React Design Principles for a SPA,
+Managing State and Props in React,
+Redux / Flux Pattern,
+HTTP Requests via Axios,
+How to structure a project directory for a componenet-based application
