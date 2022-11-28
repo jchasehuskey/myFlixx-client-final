@@ -18,7 +18,8 @@ import { Link } from 'react-router-dom';
 
 import './profile-view.scss';
 
-export default function ProfileView(props) {
+//export default function ProfileView(props) {
+export function ProfileView(props) {
   const [Username, setUsername] = useState('');
   const [Password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -119,6 +120,7 @@ removeFavorite = (MovieId) => {
         console.log(`Movie successfully removed from favorites!`);
         // console.log('******* '+response.data.favoriteMovies);
     })
+   
       .catch((e) => {
         console.error(e);
       });
@@ -204,11 +206,12 @@ removeFavorite = (MovieId) => {
           Profile
         </Card.Header>
         <Card.Body>
+          <div className="flex">
         {/* <UpdateUser user={user} favoriteMovies={favoriteMovies}/> */}
         <span className="label text-center headline-profile-update">
                 Update profile information
               </span>
-              <Form>
+              <Form className="testing">
                 <Form.Group
                   className="profile-form-group-username"
                   controlId="formGroupUsername"
@@ -276,6 +279,7 @@ removeFavorite = (MovieId) => {
                 </Button>
               </Form>
       
+      <div>
         <Row className='mt-5'>
         <h4>Your favorite movies</h4>
       </Row>
@@ -322,6 +326,8 @@ removeFavorite = (MovieId) => {
               </Col>
             ))}
           </CardGroup>
+          </div>
+          </div>
         </Card.Body>
         <Card.Footer className="text-right">
         <Button className='d-block mt-5' variant='danger' onClick={handleDelete}>
@@ -341,6 +347,19 @@ removeFavorite = (MovieId) => {
     </Container>
   );
 }
+
+
+ProfileView.propTypes = {
+  User: PropTypes.shape({
+    Username: PropTypes.string,
+    Password: PropTypes.string,
+    Email: PropTypes.string,
+    Birthday: PropTypes.string,
+    FavoriteMovies: PropTypes.array,
+  }),
+};
+
+
 
 
 

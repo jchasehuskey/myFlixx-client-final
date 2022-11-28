@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 //#1
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser} from '../../actions/actions';
 
 //#2
 import MoviesList from '../movies-list/movies-list';
@@ -21,7 +21,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { RegistrationView } from "../registration-view/registration-view";
-import ProfileView  from "../profile-view/profile-view";
+import {ProfileView}  from "../profile-view/profile-view";
 // import { ProfileView } from '../profile-view/profile-view2';
 
 import { NavBar } from "../navbar/navbar";
@@ -41,14 +41,47 @@ class MainView extends React.Component {
 
 
     // };
+    this.state = {
+
+      user: null,
+      favoriteMovies: [],
+
+
+    };
 
 
    
   }
 
-  // componentDidMount(){
-  //   this.getMovies();
-  // }
+
+
+ componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user'),
+      });
+      this.getMovies(accessToken);
+    }
+  }
+
+
+  // Fetch user data
+  getUser(token) {
+    const user = localStorage.getItem('user');
+    axios.get(`https://https://myfavflixdb.herokuapp.com/users/${user}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => {
+        this.props.setUser(response.data);
+        console.log('user set')
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  }
+
+
 
 
   getMovies(token) {
@@ -60,17 +93,6 @@ class MainView extends React.Component {
             // this.setState({
         //   movies: res.data,
         // });
-
-//MAY NEED THE BELOW
-        // let response ={
-        //   data:{
-        //     title:'',
-        //     description:''
-        //   }
-        // }
-
-
-              // #4
       this.props.setMovies(response.data);
     
       })
@@ -82,10 +104,10 @@ class MainView extends React.Component {
 
 
 
-
   /* When a user successfully logs in, this function updates the
      `user` property in state to that *particular user */
   onLoggedIn(authData) {
+    this.props.setUser(authData.user);
     console.log(authData);
     const { Username, FavoriteMovies } = authData.user;
     this.setState({
@@ -102,8 +124,10 @@ class MainView extends React.Component {
 
 
   addFavorite(MovieId, action) {
- 
-    const { user, favoriteMovies } = this.state;
+
+    const { favoriteMovies, user } = this.state;
+    // const favoriteMovies=[];
+    // const { favoriteMovies } = this.state;
     const token = localStorage.getItem('token');
     if (favoriteMovies.includes((favId) => favId === MovieId)) {
       console.log('Movie already added to favorites!');
@@ -125,6 +149,7 @@ class MainView extends React.Component {
           )
           .then(() => {
             console.log(`Movie successfully added to favorites!`);
+        
           })
           .catch((e) => {
             console.error(e);
@@ -140,58 +165,13 @@ class MainView extends React.Component {
 
 
 
-
-
-
-//   removeFavorite(MovieId, action) {
-//     const { user, favoriteMovies} = this.state;
-//     // const username = localStorage.getItem("user");
-//     const token = localStorage.getItem('token');
-//     if (token !== null && user !== null) {
-// console.log("+++++++++ curr state: ", this.state);
-//       this.setState({
-//         favoriteMovies: favoriteMovies.filter((movie) => movie !== MovieId),
-//       });
-//       axios
-//         .delete(
-//           `https://myfavflixdb.herokuapp.com/users/${user}/movies/${MovieId}`,
-//           {
-//             headers: { Authorization: `Bearer ${token}` },
-//           }
-//         )
-//         .then((response) => {
-//           console.log(`Movie successfully removed from favorites!`);
-//           console.log('******* '+response.data.favoriteMovies);
-//       })
-//         .catch((e) => {
-//           console.error(e);
-//         });
-//     }
-//   }
-
-
-
-
-  componentDidMount() {
-    let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user'),
-      });
-      this.getMovies(accessToken);
-    }
-  }
+ 
 
   render() {
-    // let{userMovies}=this.props;  this was originally integrated
-    // const { user,movies, favoriteMovies} = this.state;
+   // const { user, movies, favoriteMovies} = this.state;
     const { user, favoriteMovies} = this.state;
-    //movies was originally this.state
     let {movies} =this.props;
 
-    
-    //creates multiple areas in console
-    // console.log(favoriteMovies);  
 
     return (
       <Router>
@@ -266,7 +246,7 @@ class MainView extends React.Component {
                     user={user}
                     // removeFavorite={this.removeFavorite.bind(this)}
                     onBackClick={() => history.goBack()}
-                    getUser={user}
+                    // getUser={user}
                   />
                 </Col>
               );
@@ -379,13 +359,16 @@ class MainView extends React.Component {
 
 
 //THIS MAKES MOVIES THE PROP OF THE MAINVIEW COMPONENT
-// #7
+
 let mapStateToProps = state => {
-  return { movies: state.movies }
+  return { 
+    movies: state.movies ,
+    user:state.user
+  }
 }
 
-// #8
-export default connect(mapStateToProps, { setMovies } )(MainView);
+
+export default connect(mapStateToProps, { setMovies, setUser} )(MainView);
 
 
 
