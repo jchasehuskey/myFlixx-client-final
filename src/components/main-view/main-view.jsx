@@ -43,7 +43,7 @@ class MainView extends React.Component {
     // };
     this.state = {
 
-      // user: null,
+      user: null,
       favoriteMovies: [],
 
 
@@ -62,7 +62,7 @@ class MainView extends React.Component {
         user: localStorage.getItem('user'),
       });
       this.getMovies(accessToken);
-      this.getUser(accessToken);
+      // this.getUser(accessToken);
     }
   }
 
@@ -86,20 +86,20 @@ class MainView extends React.Component {
       });
   }
 
-  // Fetch user data
-  getUser(token) {
-    const user = localStorage.getItem('user');
-    axios.get(`https://https://myfavflixdb.herokuapp.com/users/${user}`, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then(response => {
-        this.props.setUser(response.data);
-        console.log('user set')
-      })
-      .catch(error => {
-        console.log(error.response);
-      });
-  }
+  // Fetch user data.  
+  // getUser(token) {
+  //   const user = localStorage.getItem('user');
+  //   axios.get(`https://https://myfavflixdb.herokuapp.com/users/${user}`, {
+  //     headers: { Authorization: `Bearer ${token}` }
+  //   })
+  //     .then(response => {
+  //       this.props.setUser(response.data);
+  //       console.log('user set')
+  //     })
+  //     .catch(error => {
+  //       console.log(error.response);
+  //     });
+  // }
 
 
 
@@ -173,8 +173,8 @@ class MainView extends React.Component {
 
   render() {
    // const { user, movies, favoriteMovies} = this.state;
-    const {  favoriteMovies} = this.state;
-    let {movies,user} =this.props;
+    const {  favoriteMovies, user} = this.state;
+    let {movies} =this.props;
 
 
     return (

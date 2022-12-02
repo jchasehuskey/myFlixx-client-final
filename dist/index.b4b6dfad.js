@@ -28276,7 +28276,7 @@ class MainView extends (0, _reactDefault.default).Component {
         //   favoriteMovies: [],
         // };
         this.state = {
-            // user: null,
+            user: null,
             favoriteMovies: []
         };
     }
@@ -28287,7 +28287,7 @@ class MainView extends (0, _reactDefault.default).Component {
                 user: localStorage.getItem("user")
             });
             this.getMovies(accessToken);
-            this.getUser(accessToken);
+        // this.getUser(accessToken);
         }
     }
     getMovies(token) {
@@ -28305,20 +28305,20 @@ class MainView extends (0, _reactDefault.default).Component {
             console.log(error);
         });
     }
-    // Fetch user data
-    getUser(token) {
-        const user = localStorage.getItem("user");
-        (0, _axiosDefault.default).get(`https://https://myfavflixdb.herokuapp.com/users/${user}`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>{
-            this.props.setUser(response.data);
-            console.log("user set");
-        }).catch((error)=>{
-            console.log(error.response);
-        });
-    }
+    // Fetch user data.  
+    // getUser(token) {
+    //   const user = localStorage.getItem('user');
+    //   axios.get(`https://https://myfavflixdb.herokuapp.com/users/${user}`, {
+    //     headers: { Authorization: `Bearer ${token}` }
+    //   })
+    //     .then(response => {
+    //       this.props.setUser(response.data);
+    //       console.log('user set')
+    //     })
+    //     .catch(error => {
+    //       console.log(error.response);
+    //     });
+    // }
     /* When a user successfully logs in, this function updates the
      `user` property in state to that *particular user */ onLoggedIn(authData) {
         console.log(authData);
@@ -28363,8 +28363,8 @@ class MainView extends (0, _reactDefault.default).Component {
     }
     render() {
         // const { user, movies, favoriteMovies} = this.state;
-        const { favoriteMovies  } = this.state;
-        let { movies , user  } = this.props;
+        const { favoriteMovies , user  } = this.state;
+        let { movies  } = this.props;
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbar.NavBar), {
