@@ -77,6 +77,81 @@
   margin-top: 0 !important;
 }
 
+.search-filter {
+  float: right !important;
+  width: 25% !important;
+  margin-right: 1.8rem !important;
+}
+
+.mg {
+  margin-left: 2.6rem !important;
+  margin-right: 3.6rem !important;
+}
+
+* {
+  font-family: Inter, sans-serif !important;
+}
+
+.card-container {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  width: 20rem !important;
+}
+
+.movie-card {
+  border-radius: 50%;
+  margin: 4px;
+  padding: 2px;
+  transition: all .6s;
+  background-color: #212529 !important;
+}
+
+.movie-card:hover {
+  scale: 105%;
+  background-color: #000000ea !important;
+}
+
+.card-title-name {
+  color: #fff !important;
+  color: #a5d8ff !important;
+  font-family: Playfair Display SC, serif !important;
+  font-size: .8rem !important;
+  font-weight: 700 !important;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.description {
+  height: 2rem;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 24rem;
+}
+
+.card-button {
+  margin-top: .8rem;
+  color: beige !important;
+  background: #343a40 !important;
+  text-decoration: none !important;
+}
+
+.card-button:hover {
+  color: #f783ac !important;
+  background-color: #212529 !important;
+}
+
+.button.card-button.btn.btn-link {
+  margin-top: 0 !important;
+}
+
 * {
   font-family: Inter, sans-serif;
 }
