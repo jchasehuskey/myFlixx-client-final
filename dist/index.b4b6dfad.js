@@ -28867,19 +28867,11 @@ parcelHelpers.export(exports, "SET_USER", ()=>SET_USER);
 // export const DELETE_FAVORITE = 'DELETE_FAVORITE';
 parcelHelpers.export(exports, "setMovies", ()=>setMovies);
 parcelHelpers.export(exports, "setFilter", ()=>setFilter);
-parcelHelpers.export(exports, "setUser", ()=>setUser) // export function updateUser(value){
- //     return{type:UPDATE_USER,value};
- // }
- // export function deleteUser(value){
- //     return{type:DELETE_USER,value};
- // }
- // export function setFavorite(value){
- //     return{type:SET_FAVORITE,value};
- // }
- // export function deleteFavorite(value){
- //     return{type:DELETE_FAVORITE,value};
- // }
-;
+parcelHelpers.export(exports, "setUser", ()=>setUser);
+parcelHelpers.export(exports, "updateUser", ()=>updateUser);
+parcelHelpers.export(exports, "deleteUser", ()=>deleteUser);
+parcelHelpers.export(exports, "setFavorite", ()=>setFavorite);
+parcelHelpers.export(exports, "deleteFavorite", ()=>deleteFavorite);
 const SET_MOVIES = "SET_MOVIES";
 const SET_FILTER = "SET_FILTER";
 const SET_USER = "SET_USER";
@@ -28900,6 +28892,30 @@ function setUser(value) {
     console.log("SET_Users action triggered");
     return {
         type: SET_USER,
+        value
+    };
+}
+function updateUser(value) {
+    return {
+        type: UPDATE_USER,
+        value
+    };
+}
+function deleteUser(value) {
+    return {
+        type: DELETE_USER,
+        value
+    };
+}
+function setFavorite(value) {
+    return {
+        type: SET_FAVORITE,
+        value
+    };
+}
+function deleteFavorite(value) {
+    return {
+        type: DELETE_FAVORITE,
         value
     };
 }

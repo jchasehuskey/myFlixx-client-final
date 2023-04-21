@@ -25,18 +25,18 @@ export function setUser(value){
     return{type:SET_USER,value};
 }
 
-// export function updateUser(value){
-//     return{type:UPDATE_USER,value};
-// }
+export function updateUser(value){
+    return{type:UPDATE_USER,value};
+}
 
-// export function deleteUser(value){
-//     return{type:DELETE_USER,value};
-// }
+export function deleteUser(value){
+    return{type:DELETE_USER,value};
+}
 
-// export function setFavorite(value){
-//     return{type:SET_FAVORITE,value};
-// }
+export function setFavorite(value){
+    return{type:SET_FAVORITE,value};
+}
 
-// export function deleteFavorite(value){
-//     return{type:DELETE_FAVORITE,value};
-// }
+export function deleteFavorite(value){
+    return{type:DELETE_FAVORITE,value};
+}
