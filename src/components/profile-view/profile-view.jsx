@@ -39,37 +39,68 @@ export function ProfileView(props) {
 
   //whenever anything inside the array changes, it runs whatsever in the useEffect arrow function 
 
-  getFavMovies = () => {
-    const username = localStorage.getItem("user");
-    const token = localStorage.getItem("token");
-    axios
-      .get(`https://myfavflixdb.herokuapp.com/users/${username}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        console.log('******* '+response.data.favoriteMovies);
-        const token = localStorage.getItem('token');    
-        axios
-          .get('https://myfavflixdb.herokuapp.com/movies', {
-            headers: { Authorization: `Bearer ${token}` },
-          })
-          .then((res) => {
-            const fMovies = [];
-            response.data.favoriteMovies.map((MovieId) => {
-              fMovies.push(res.data.find((m) => m._id === MovieId));
-            });
-            setMovies(fMovies);
-// console.log("+++++++++++++ in page movies set: ", this.state);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      })
-      .catch(function (error) {
-        console.log(error);
+//   getFavMovies = () => {
+//     const username = localStorage.getItem("user");
+//     const token = localStorage.getItem("token");
+//     axios
+//       .get(`https://myfavflixdb.herokuapp.com/users/${username}`, {
+//         headers: { Authorization: `Bearer ${token}` },
+//       })
+//       .then((response) => {
+//         console.log('******* '+response.data.favoriteMovies);
+//         const token = localStorage.getItem('token');    
+//         axios
+//           .get('https://myfavflixdb.herokuapp.com/movies', {
+//             headers: { Authorization: `Bearer ${token}` },
+//           })
+//           .then((res) => {
+//             const fMovies = [];
+//             response.data.favoriteMovies.map((MovieId) => {
+//               fMovies.push(res.data.find((m) => m._id === MovieId));
+//             });
+//             setMovies(fMovies);
+// // console.log("+++++++++++++ in page movies set: ", this.state);
+//           })
+//           .catch(function (error) {
+//             console.log(error);
+//           });
+//       })
+//       .catch(function (error) {
+//         console.log(error);
         
-      });
-  };  
+//       });
+//   };  
+
+const getFavMovies = () => {
+  const username = localStorage.getItem("user");
+  const token = localStorage.getItem("token");
+  axios
+    .get(`https://myfavflixdb.herokuapp.com/users/${username}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => {
+      console.log('******* '+response.data.favoriteMovies);
+      const token = localStorage.getItem('token');    
+      axios
+        .get('https://myfavflixdb.herokuapp.com/movies', {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => {
+          const fMovies = [];
+          response.data.favoriteMovies.map((MovieId) => {
+            fMovies.push(res.data.find((m) => m._id === MovieId));
+          });
+          setMovies(fMovies);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    })
+    .catch(function (error) {
+      console.log(error);
+      
+    });
+};  
 
   // Validate user inputs
   const validate = () => {
@@ -101,7 +132,7 @@ export function ProfileView(props) {
 
 
 
-removeFavorite = (MovieId) => {
+const removeFavorite = (MovieId) => {
   const favoriteMovies=[];
   const token = localStorage.getItem('token');
   if (token !== null && user !== null) {
