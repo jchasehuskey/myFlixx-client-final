@@ -4,10 +4,10 @@
 export const SET_MOVIES = 'SET_MOVIES';
 export const SET_FILTER = 'SET_FILTER';
 export const SET_USER = 'SET_USER';
-// export const UPDATE_USER = 'UPDATE_USER';
-// export const DELETE_USER = 'DELETE_USER';
-// export const SET_FAVORITE = 'SET_FAVORITE';
-// export const DELETE_FAVORITE = 'DELETE_FAVORITE';
+export const UPDATE_USER = 'UPDATE_USER';
+export const DELETE_USER = 'DELETE_USER';
+export const SET_FAVORITE = 'SET_FAVORITE';
+export const DELETE_FAVORITE = 'DELETE_FAVORITE';
 
 
 
